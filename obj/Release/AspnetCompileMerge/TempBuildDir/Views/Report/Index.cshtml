@@ -1,0 +1,1284 @@
+﻿@model System.Data.DataTable
+@using System.Data;
+@using PagedList;
+@using PagedList.Mvc;
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <a href="@Url.Action("Index", "Report", new { year = "", STATUS_SEARCH = '0' })">
+            <div class="small-box bg-orange">
+                <div class="inner">
+                    <h3> @ViewBag.DLTChassis_InvoiceNot</h3>
+                    <p>สีส้ม:ไม่พบข้อมูล</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-ban"></i>
+                </div>
+
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <a href="@Url.Action("Index", "Report", new { year = "", STATUS_SEARCH = '1' })">
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3> @ViewBag.DLTChassis_InvoiceOr</h3>
+                    <p>สีเหลือง:วางไม่ครบ  </p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-cut"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <a href="@Url.Action("Index", "Report", new { year = "", STATUS_SEARCH = '2' })">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3> @ViewBag.DLTChassis_InvoiceSc</h3>
+
+                    <p>สีเขียว:วางครบ</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-check-square-o"></i>
+                </div>
+
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <a href="@Url.Action("Index", "Report", new { year = "", STATUS_SEARCH = '3' })">
+            <div class="small-box bg-purple">
+                <div class="inner">
+                    <h3> @ViewBag.DLTChassis_InvoiceNext</h3>
+                    <p>สีม่วง:วางเกิน</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-check-square-o"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+
+
+
+</div>
+<div class="box">
+
+    <!-- /.box-header -->
+    <div class="box-body">
+
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+            <!-- /.box-header -->
+            <div class="box-body">
+
+                <div class="">
+                    <!-- /.box-body -->
+
+
+                    <div class="">
+
+                        <div class="box box-primary box-solid">
+                            <div class="box-header with-border box-primary">
+                                <h3 class="box-title">
+                                    Search:
+                                </h3>
+
+
+                                <div class="box-tools pull-right">
+                                    <!-- Collapse Button -->
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <!-- /.box-tools -->
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <form asp-controller="Report" asp-action="Index" method="get">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-xs-6">
+                                            <!-- small box -->
+                                            <a href="@Url.Action("Index", "Report", new { year = "", STATUS_SEARCH = '3' })">
+                                                <div class="small-box bg-gray-light">
+                                                    <div class="inner">
+
+                                                        <p>ปี:  เริ่ม  @{int datastart = Convert.ToInt32("2016") + 543; } @datastart  ถึง  @{int datacurrent = Convert.ToInt32(DateTime.Now.Year) + 543; } @datacurrent</p>
+                                                    </div>
+
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-3 col-xs-6">
+                                            <!-- small box -->
+                                            <a href="@Url.Action("Index", "Report", new { year = "", STATUS_SEARCH = '3' })">
+                                                <div class="small-box bg-gray-light">
+                                                    <div class="inner">
+
+                                                        <p>จำนวนลูกค้า : @ViewBag.Total_Customer</p>
+                                                    </div>
+
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-3 col-xs-6">
+                                            <!-- small box -->
+                                            <a href="@Url.Action("Index", "Report", new { year = "", STATUS_SEARCH = '3' })">
+                                                <div class="small-box bg-gray-light">
+                                                    <div class="inner">
+
+                                                        <p>จำนวน DEALER : @ViewBag.Total_Dealer</p>
+                                                    </div>
+
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-3 col-xs-6">
+                                            <!-- small box -->
+                                            <a href="@Url.Action("Index", "Report", new { year = "", STATUS_SEARCH = '3' })">
+                                                <div class="small-box bg-gray-light">
+                                                    <div class="inner">
+
+                                                        <p>ราคา:-</p>
+                                                    </div>
+
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="box box-primary box-solid collapsed-box">
+                                        <div class="box-header with-border box-primary">
+                                            <h3 class="box-title">
+                                                ค้นหาข้อมูลทั่วไป:
+                                                <div class="box-tools pull-right">
+                                                    <!-- Collapse Button -->
+                                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                        คลิกที่นี่
+                                                    </button>
+                                                </div>
+                                            </h3>
+
+                                        </div>
+                                        <div class="box-body">
+                                            <div class="input-group margin  col-sm-2">
+                                                <!-- /btn-group -->
+                                                <input type="text" class="form-control col-lg-2" id="CHASSIS_SEARCH" name="CHASSIS_SEARCH" placeholder="เลขที่รถ" value="@ViewBag.CHASSIS_SEARCH">
+                                            </div>
+                                            <div class="input-group margin  col-sm-2">
+                                                <!-- /btn-group -->
+                                                <input type="text" class="form-control col-lg-2" id="INV_CUSTOMER_SEARCH" name="INV_CUSTOMER_SEARCH" placeholder="ชื่อ ลูกค้า INV" value="@ViewBag.INV_CUSTOMER_SEARCH">
+                                            </div>
+                                            <div class="input-group margin  col-sm-2">
+                                                <!-- /btn-group -->
+                                                <input type="text" class="form-control col-lg-2" id="INVOICE_NO_SEARCH" name="INVOICE_NO_SEARCH" placeholder="INVOICE_NO" value="@ViewBag.INVOICE_NO">
+                                            </div>
+                                            <div class="input-group margin  col-sm-2">
+                                                <!-- /btn-group -->
+                                                <input type="text" class="form-control col-lg-2" id="MEI_SEARCH" name="MEI_SEARCH" placeholder="MEI" value="@ViewBag.MEI_SEARCH">
+                                            </div>
+                                            <div class="input-group margin col-sm-2">
+                                                <input type="text" id="MEI_CERTIF" name="MEI_CERTIF" class="form-control" autocomplete="off" placeholder="MEI_CERTIF" value="@ViewBag.MEI_CERTIF">
+                                            </div>
+                                            <div class="input-group margin  col-sm-2">
+                                                <!-- /btn-group -->
+                                                <input type="text" class="form-control col-lg-2" id="LICENSE_SEARCH" name="LICENSE_SEARCH" placeholder="ทะเบียนรถ">
+                                            </div>
+                                            <div class="input-group margin col-sm-2">
+                                                <input type="text" id="LICENSE_CERTIF" name="LICENSE_CERTIF" class="form-control" autocomplete="off" placeholder="LICENSE_CERTIF" value="@ViewBag.LICENSE_CERTIF">
+                                            </div>
+
+                                            <div class="input-group margin  col-sm-2">
+                                                <!-- /btn-group -->
+                                                <input type="text" class="form-control col-lg-2" id="CUSTOMER_SEARCH" name="CUSTOMER_SEARCH" placeholder="ชื่อ ลูกค้าใน CERTIF" value="@ViewBag.CUSTOMER_SEARCH">
+                                            </div>
+
+                                            <div class="input-group margin  col-sm-2">
+                                                <!-- /btn-group -->
+                                                <input type="text" class="form-control col-lg-2" id="DELALER_SEARCH" name="DELALER_SEARCH" placeholder="ชื่อ DEALERใน CERTIF" value="@ViewBag.DELALER_SEARCH">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="box box-primary box-solid  collapsed-box">
+                                        <div class="box-header with-border box-primary">
+                                            <h3 class="box-title">
+                                                ค้นหาข้อมูลประเภทวันที่:
+                                                <div class="box-tools pull-right">
+                                                    <!-- Collapse Button -->
+                                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                        คลิกที่นี่
+                                                    </button>
+                                                </div>
+                                            </h3>
+
+                                        </div>
+                                        <div class="box-body">
+                                            <div class="input-group margin  col-sm-2">
+                                                <select name="MONTH_SEARCH" id="MONTH_SEARCH" aria-controls="example1" class="form-control">
+                                                    <option value="" selected>---เดือน---</option>
+                                                    <option value="1">January</option>
+                                                    <option value="2">February</option>
+                                                    <option value="3">March</option>
+                                                    <option value="4">April</option>
+                                                    <option value="5">May</option>
+                                                    <option value="6">June</option>
+                                                    <option value="7">July</option>
+                                                    <option value="8">August</option>
+                                                    <option value="9">September</option>
+                                                    <option value="10">October</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">December</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="input-group margin  col-sm-2">
+                                                <!-- /btn-group -->
+                                                <select name="YEAR_SEARCH" id="YEAR_SEARCH" aria-controls="example1" class="form-control">
+                                                    <option value="" selected>----ปี---</option>
+                                                    @foreach (var item in ViewBag.tb_group_year_report)
+                                                    {
+                                                        <option value="@item.year">
+                                                            @item.year
+                                                        </option>
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="input-group margin col-sm-2">
+                                                <input type="text" id="STARTDAY_SEARCH" name="STARTDAY_SEARCH" class="form-control" autocomplete="off" placeholder="วันที่เริ่มติดตั้ง">
+                                            </div>
+                                            <div class="input-group margin col-sm-2">
+                                                <input type="text" id="ENDDAY_SEARCH" name="ENDDAY_SEARCH" class="form-control" autocomplete="off" placeholder="ถึงวันที่ติดตั้ง">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="box box-primary box-solid  collapsed-box">
+                                        <div class="box-header with-border box-primary">
+                                            <h3 class="box-title">
+                                                ค้นหาข้อมูลสถานะ:
+                                                <div class="box-tools pull-right">
+                                                    <!-- Collapse Button -->
+                                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                        คลิกที่นี่
+                                                    </button>
+                                                </div>
+                                            </h3>
+                                        </div>
+                                        <div class="box-body">
+                                            <div class="input-group margin  col-sm-2">
+                                                <!-- /btn-group -->
+                                                <select name="STATUS_SEARCH" id="STATUS_SEARCH" aria-controls="example1" class="form-control">
+                                                    <option value="All" selected>---สถานะการวางบิลทั้งหมด---</option>
+                                                    <option value="0">ไม่พอข้อมูล</option>
+                                                    <option value="1">วางไม่ครบ</option>
+                                                    <option value="2">วางครบ</option>
+                                                    <option value="3">วางเกิน</option>
+                                                </select>
+                                            </div>
+
+
+                                            <div class="input-group margin col-sm-2">
+                                                <select name="NOT_MEI" id="NOT_MEI" aria-controls="example1" class="form-control">
+                                                    <option value="">--ข้อมูล MEI มีและไม่มี--</option>
+                                                    <option value="1">มี Mei</option>
+                                                    <option value="2">ไม่มี Mei</option>
+                                                </select>
+                                            </div>
+                                            <div class="input-group margin col-sm-2">
+                                                <select name="NOT_LICENSE" id="NOT_LICENSE" aria-controls="example1" class="form-control">
+                                                    <option value="">--ข้อมูล LICENSE มีและไม่มี--</option>
+                                                    <option value="1">มี LICENSE</option>
+                                                    <option value="2">ไม่มี LICENSE</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <div class="input-group margin  col-sm-11">
+                                        <div class="=row">
+                                            <div class="col-lg-5">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fa fa-search"></i> Search
+                                                </button>
+                                                <input type="button" value="Clear Search" class="btn btn-primary" onclick="window.location.href='@Url.Action("Report","Index")'" />
+                                                <button type="button" class="btn btn-primary" onclick="" data-toggle="modal" data-target="#modal_1-info">
+                                                    <i class="fa fa-fw fa-file-excel-o"></i>    Export Excal
+                                                </button>
+
+
+                                            </div>
+                                            <div class="col-lg-4 right">
+
+
+                                                <button type="button" class="btn btn-primary" onclick="" data-toggle="modal" data-target="#modal_-info">
+                                                    <i class="fa fa-search"></i>     Filter Search
+                                                </button>
+                                            </div>
+
+                                </form>
+                                <br />
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="box-body table-responsive no-padding">
+                              
+                                <table class="table table-hover ">
+                                    <thead>
+                                        <tr role="row" style="background-color:#3c8dbc;color:white;border-color:black;">
+                                            <th class="col-lg-2">รายปี</th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2">2559</th>
+                                            <th class="col-lg-2 text-center" colspan="3"> 2560  </th>
+                                            <th class="col-lg-2 text-center" colspan="3"> 2561  </th>
+                                            <th class="col-lg-2 text-center" colspan="3"> 2562  </th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                        </tr>
+                                        <tr role="row" style="background-color:#3c8dbc;color:white">
+                                            <th class="col-lg-2">Status</th>
+                                            <th class="col-lg-2">
+                                             
+                                            InvoiceNo</th>
+                                            <th class="col-lg-2">Date</th>
+                                            <th class="col-lg-2">Price</th>
+
+                                            <th class="col-lg-2">InvoiceNo</th>
+                                            <th class="col-lg-2">Date</th>
+                                            <th class="col-lg-2">Price</th>
+
+                                            <th class="col-lg-2">InvoiceNo</th>
+                                            <th class="col-lg-2">Date</th>
+                                            <th class="col-lg-2">Price</th>
+
+                                            <th class="col-lg-2">InvoiceNo</th>
+                                            <th class="col-lg-2">Date</th>
+                                            <th class="col-lg-2">Price</th>
+                                           
+                                            <th class="col-lg-2">
+                                                <select style="color:black" id="sort_INVOICE_CUSTOMER" name="sort_INVOICE_CUSTOMER">
+                                                    <option value="">-เรียงลำดับ-</optin>
+                                                    <option value="DES">มากสุด</optin>
+                                                    <option value="ASC">น้อยสุด</optin>
+                                                </select>
+                                                INVOICE_CUSTOMER
+                                            </th>
+                                            <th class="col-lg-2">INVOICE_CUSTOMER_PHONE</th>
+                                            <th class="col-lg-2">
+                                                <select style="color:black" id="sort_INSTALL_DATE" name="sort_INSTALL_DATE">
+                                                    <option value="">-เรียงลำดับ-</optin>
+                                                    <option value="DES">มากสุด</optin>
+                                                    <option value="ASC">น้อยสุด</optin>
+                                                </select>
+                                                INSTALL_DATE
+                                            </th>
+                                            <th class="col-lg-2">
+                                                <select style="color:black" id="sort_ID_LICENSE" name="sort_ID_LICENSE">
+                                                    <option value="">-เรียงลำดับ-</optin>
+                                                    <option value="DES">มากสุด</optin>
+                                                    <option value="ASC">น้อยสุด</optin>
+                                                </select>
+                                                ID_LICENSE
+                                            </th>
+
+                                            <th class="col-lg-2">
+                                                <select style="color:black" id="sort_ID_CHASSIS" name="sort_ID_CHASSIS">
+                                                    <option value="">-เรียงลำดับ-</optin>
+                                                    <option value="DES">มากสุด</optin>
+                                                    <option value="ASC">น้อยสุด</optin>
+                                                </select>
+                                                ID_CHASSIS
+                                            </th>
+                                            <th class="col-lg-2">
+                                                <select style="color:black" id="sort_MEI" name="sort_MEI">
+                                                    <option value="">-เรียงลำดับ-</optin>
+                                                    <option value="DES">มากสุด</optin>
+                                                    <option value="ASC">น้อยสุด</optin>
+                                                </select><br>
+                                                MEI
+                                            </th>
+                                            <th class="col-lg-2">
+                                                <select style="color:black" id="sort_INVOICE_COUNT" name="sort_INVOICE_COUNT">
+                                                    <option value="">-เรียงลำดับ-</optin>
+                                                    <option value="DES">มากสุด</optin>
+                                                    <option value="ASC">น้อยสุด</optin>
+                                                </select>
+                                                INVOICE_COUNT
+                                            </th>
+                                            <th class="col-lg-2">
+                                                <select style="color:black" id="sort_CUSTOMER_NAME" name="sort_CUSTOMER_NAME">
+                                                    <option value="">-เรียงลำดับ-</optin>
+                                                    <option value="DES">มากสุด</optin>
+                                                    <option value="ASC">น้อยสุด</optin>
+                                                </select>
+                                                CUSTOMER_NAME
+                                            </th>
+                                            <th class="col-lg-2">CUSTOMER_PHONE</th>
+                                            <th class="col-lg-2">
+                                                <select style="color:black" id="sort_PRICE" name="sort_PRICE">
+                                                    <option value="">-เรียงลำดับ-</optin>
+                                                    <option value="DES">มากสุด</optin>
+                                                    <option value="ASC">น้อยสุด</optin>
+                                                </select>
+                                                MEI CERTIF
+                                            </th>
+
+                                            <th class="col-lg-2">
+                                                <select style="color:black" id="sort_PRICE_R" name="sort_PRICE_R">
+                                                    <option value="">-เรียงลำดับ-</optin>
+                                                    <option value="DES">มากสุด</optin>
+                                                    <option value="ASC">น้อยสุด</optin>
+                                                </select>
+                                                LICENSE CERTIF
+                                            </th>
+                                            <th class="col-lg-2">
+                                                <select style="color:black" id="sort_DEALER_CONTACT_NAME" name="sort_DEALER_CONTACT_NAME">
+                                                    <option value="">-เรียงลำดับ-</optin>
+                                                    <option value="DES">มากสุด</optin>
+                                                    <option value="ASC">น้อยสุด</optin>
+                                                </select>
+                                                DEALER_CONTACT_NAME
+                                            </th>
+                                            <th class="col-lg-2">DEALER_CONTACT_PHONE</th>
+                                            <th class="col-lg-2">DETAIL</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{  int i = 0;
+                                            string bg = "";
+                                            string ID = "";
+                                            int i2 = -1;
+                                            string color = "";
+                                        }
+
+                                        @foreach (System.Data.DataRow row in Model.Rows)
+                                        {
+                                            i2++;
+                                            i = 0;
+                                            string field = Model.Rows[i2].Field<string>(1).ToString().Split(':')[0];
+                                            <tr class="@field" id="" name="">
+                                                @foreach (var cell in row.ItemArray)
+                                                {
+                                                    i++;
+                                                    if (i == 2) { bg = cell.ToString(); }
+                                                    if (i == 3) { ID = cell.ToString(); }
+                                                    if (i == 2)
+                                                    {
+                                                        string Status = "-";
+                                                        if (cell.ToString().Split(':')[1] == "1") { Status = "M"; }
+                                                        if (cell.ToString().Split(':')[2] == "1") { Status = Status+ "L"; }
+                                                        <td>@Status </td>
+                                                    }
+                                                    if (i == 3)
+                                                    {
+                                                        <td >@cell.ToString().Replace("'", "")  </td>
+                                                    }
+                                                    if (i >= 4 && i <= 27)
+                                                    {
+                                                        <td > @cell.ToString() </td>
+                                                    }
+                                                }
+                                                <td>
+                                                    <button type="button" class="btn btn-primary" onclick="list_Head('@ID')" data-toggle="modal" data-target="#modal-info">
+                                                        Detail
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="modal modal fade" id="modal_-info" name="modal_-info">
+                        <div class="modal-dialog">
+                            <div class="modal-header bg-primary">
+                                <button type="button" class="close" data-dismiss="modal_" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title">Edite Filter</h4>
+                            </div>
+                            <div class="modal-content">
+                               
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="control-label">Field</label><br>
+                                                <select id="" name="" class="form-control">
+                                                    <option value="">CHASSIS</option>
+                                                    <option value="">MEI</option>
+                                                    <option value="">INVOICE</option>
+                                                    <option value="">CUSTOMERE</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <label class="control-label">เงื่อนไข</label><br>
+                                                <select id="" name="" class="form-control">
+                                                    <option selected="" value="">Contains</option>
+                                                    <option value="">StartWith</option>
+                                                    <option value="">Not equal</option>
+                                                    <option value="">Is not null</option>
+                                                    <option value="">Is null</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <label class="control-label">ข้อมูล</label><br>
+                                                <input type="text" class="form-control" id="" name="=" placeholder="">
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-2">
+                                                <label class="control-label"></label><br>
+                                                <select id="" name="" class="form-control">
+                                                    <option value="">OR</option>
+                                                    <option value="">AND</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <label class="control-label">Field</label><br>
+                                                <select id="" name="" class="form-control">
+                                                    <option value="">CHASSIS</option>
+                                                    <option value="">MEI</option>
+                                                    <option value="">INVOICE</option>
+                                                    <option value="">CUSTOMERE</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <label class="control-label">เงื่อนไข</label><br>
+                                                <select id="" name="" class="form-control">
+                                                    <option selected="" value="">Contains</option>
+                                                    <option value="">StartWith</option>
+                                                    <option value="">Not equal</option>
+                                                    <option value="">Is not null</option>
+                                                    <option value="">Is null</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <label class="control-label">ข้อมูล</label><br>
+                                                <input type="text" class="form-control" id="" name="=" placeholder="">
+                                            </div>
+
+                                        </div>
+                                    <br>
+                                        <div class="col-lg-7">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-hourglass-2"></i> เพิ่ม ข้อมูลค้นหา
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-hourglass-2"></i> ลบ ข้อมูลค้นหา
+                                            </button>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fa fa-hourglass-2"></i> Search
+                                            </button>
+                                        </div>
+                                  
+
+                                </div>
+
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+                        </tbody>
+                        </table>
+                    </div>
+                    <div class="modal modal fade" id="modal_1-info" name="modal_1-info">
+                        <div class="modal-dialog">
+                            <div class="modal-header bg-primary">
+                                <button type="button" class="close" data-dismiss="modal_1" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title">ออกรายงาน</h4>
+                            </div>
+                            <div class="modal-content">
+                                <div class="box-body">
+                                    <label class="control-label">เลือกรายการ</label><br>
+                                    <select id="Status_" name="Status_" class="form-control">
+                                        <option selected="selected" value="">สถานะ</option>
+                                        <option value="red">ย้าย:ไม่พบข้อมูล</option>
+                                        <option value="orange">ย้าย:วางไม่ครบ</option>
+                                        <option value="green">ย้าย:วางครบ</option>
+                                        <option value="purple">ย้าย:วางเกิน</option>
+                                    </select>
+                                    <select id="d_" name="d_" class="form-control">
+                                        <option selected="selected" value="">วันที่</option>
+
+                                        @for (int i_ = 1; i_ < 30; i_++)
+                                        {
+                                            <option value="@i_">@i_</option>
+                                        }
+                                    </select>
+                                    <select id="m_" name="m_" class="form-control">
+                                        <option selected="selected" value="">เดือน</option>
+                                        <option value="1">January</option>
+                                        <option value="2">February</option>
+                                        <option value="3">March</option>
+                                        <option value="4">April</option>
+                                        <option value="5">May</option>
+                                        <option value="6">June</option>
+                                        <option value="7">July</option>
+                                        <option value="8">August</option>
+                                        <option value="9">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                    </select>
+                                    <select id="y_" name="y_" class="form-control">
+                                        <option selected="selected" value="">ปี</option>
+                                        @for (int i_y = 2016; i_y < 2020; i_y++)
+                                        {
+                                            <option value="@i_y">@i_y</option>
+                                        }
+                                    </select>
+
+                                    <br>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-sm-10">
+                                                <input type="hidden" name="user_detail" id="user_detail" class="form-control" id="inputPassword3" size="50" value="@ViewBag.userid" maxlength="100">
+                                            </div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <a id="report_" name="report_" href="/Report/ExcelOutput?Status_=&d_=&m_=&y_=">
+                                                <div class="btn btn-primary btn-block btn-flat">
+                                                    Export รายการงาน
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+                        </tbody>
+                        </table>
+                    </div>
+                    <div class="modal modal fade" id="modal-info" name="modal-info">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header bg-primary">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="hpopup" name="hpopup"></h4>
+                                </div>
+                                <input id="idcha" name="idcha" type="hidden"></input>
+                                <input id="inv_no" name="inv_no" type="hidden"></input>
+                                <input id="inv_no_date" name="inv_no_date" type="hidden"></input>
+                                <input id="inv_no_price" name="inv_no_price" type="hidden"></input>
+                                <div id="content">
+                                    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                                        <li class="active">
+                                            <a href="#tab1"
+                                               data-toggle="tab">เพิ่มข้อมูล</a>
+                                        </li>
+                                        <li><a href="#tab2" data-toggle="tab">แก้ไข</a></li>
+
+                                    </ul>
+                                    <div id="my-tab-content" class="tab-content">
+                                        <div class="tab-pane  active" id="tab1">
+                                            <div class="box-body">
+                                                <label class="control-label">อัพเดทข้อมูลสถานะ</label><br>
+                                                <select id="flag" name="flag" class="form-control">
+                                                    <option selected="selected" value="">สถานะ</option>
+                                                    <option value="1">ย้าย:ไม่พบข้อมูล</option>
+                                                    <option value="2">ย้าย:วางไม่ครบ</option>
+                                                    <option value="3">ย้าย:วางครบ</option>
+                                                    <option value="4">ย้าย:วางเกิน</option>
+                                                </select>
+
+                                                <input id="up_date_invoice" name="up_date_invoice" class="form-control" />
+
+                                                <div class="form-group">
+                                                    <input class="form-control" id="invoice_no" name="invoice_no" placeholder="เลขที่ INVOICE" />
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <br />
+                                                        <label for="" class="col-sm-3 control-label">หัวข้อ</label>
+
+                                                        <div class="col-sm-10">
+                                                            <input name="title" id="title" type="text" class="form-control" id="inputPassword3" size="50" maxlength="100">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <label for="" class="col-sm-10 control-label">รายละเอียด</label>
+
+                                                        <div class="col-sm-10">
+                                                            <textarea cols="45" name="textremark" id="textremark" rows="20" class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-10">
+                                                            <input type="hidden" name="user_detail" id="user_detail" class="form-control" id="inputPassword3" size="50" value="" maxlength="100">
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <button onclick="Save_Detail()" class="btn btn-primary btn-block btn-flat">บันทึก</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="tab2">
+                                            <div class="box-body">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        INVOICE_NO
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        INVOICE_DATE
+                                                    </div>
+                                                </div>
+                                                <div id="table_invoice" name="table_invoice" class="box-body">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                    <!-- Header -->
+
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+                    <div class="modal modal fade" id="modal_1-info" name="modal_1-info">
+                        <div class="modal-dialog">
+                            <div class="modal-header bg-primary">
+                                <button type="button" class="close" data-dismiss="modal_1" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title">ออกรายงาน</h4>
+                            </div>
+                            <div class="modal-content">
+                                <div class="box-body">
+                                    <label class="control-label">เลือกรายการ</label><br>
+                                    <select id="Status_" name="Status_" class="form-control">
+                                        <option selected="selected" value="">สถานะ</option>
+                                        <option value="red">ย้าย:ไม่พบข้อมูล</option>
+                                        <option value="orange">ย้าย:วางไม่ครบ</option>
+                                        <option value="green">ย้าย:วางครบ</option>
+                                        <option value="purple">ย้าย:วางเกิน</option>
+                                    </select>
+                                    <select id="d_" name="d_" class="form-control">
+                                        <option selected="selected" value="">วันที่</option>
+
+                                     
+                                    </select>
+                                    <select id="m_" name="m_" class="form-control">
+                                        <option selected="selected" value="">เดือน</option>
+                                        <option value="Jan">January</option>
+                                        <option value="Feb">February</option>
+                                        <option value="Mar">March</option>
+                                        <option value="Apr">April</option>
+                                        <option value="May">May</option>
+                                        <option value="Jun">June</option>
+                                        <option value="Jul">July</option>
+                                        <option value="Aug">August</option>
+                                        <option value="Sep">September</option>
+                                        <option value="Oct">October</option>
+                                        <option value="Nov">November</option>
+                                        <option value="Dec">December</option>
+                                    </select>
+                                    </select>
+                                    <select id="y_" name="y_" class="form-control">
+                                        <option selected="selected" value="">ปี</option>
+
+                                    </select>
+
+                                    <br>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-sm-10">
+                                                <input type="hidden" name="user_detail" id="user_detail" class="form-control" id="inputPassword3" size="50" value="" maxlength="100">
+                                            </div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <a id="report_" name="report_" href="">
+                                                <div class="btn btn-primary btn-block btn-flat">
+                                                    Export รายการงาน
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+                        </tbody>
+                        </table>
+                    </div>
+
+                    <br>
+                    <div class="row text-right"> หน้าที่ @ViewBag.page_this   /   จำนวนหน้าทั้งหมด @ViewBag.TotalPage
+                        @{ string link_page = "";
+                        }
+                          <nav>
+                              <ul class="pagination">
+                                  <li class="@link_page"><a class="page-link" href="@Url.Action("Index", "Report",new {
+                                                                                   page = 1,
+                                                                                   CHASSIS_SEARCH = ViewBag.CHASSIS_SEARCH,
+                                                                                   CUSTOMER_SEARCH = ViewBag.CUSTOMER_SEARCH,
+                                                                                   DELALER_SEARCH = ViewBag.DELALER_SEARCH,
+                                                                                   STATUS_SEARCH = ViewBag.STATUS_SEARCH,
+                                                                                   ORDER_SEARCH = ViewBag.ORDER_SEARCH,
+                                                                                   INV_CUSTOMER_SEARCH = ViewBag.INV_CUSTOMER_SEARCH,
+                                                                                   MONTH_SEARCH = ViewBag.MONTH_SEARCH,
+                                                                                   YEAR_SEARCH = ViewBag.YEAR_SEARCH,
+                                                                                   STARTDAY_SEARCH = ViewBag.STARTDAY_SEARCH,
+                                                                                   ENDDAY_SEARCH = ViewBag.ENDDAY_SEARCH,
+                                                                                   MEI_CERTIF = ViewBag.MEI_CERTIF,
+                                                                                   LICENSE_CERTIF = ViewBag.LICENSE_CERTIF,
+                                                                                   NOT_MEI = ViewBag.NOT_MEI,
+                                                                                   NOT_LICENSE = ViewBag.NOT_LICENSE
+
+                                                                               })">Previous </a></li>
+                                  @for (int pg =ViewBag.page_this-1;pg< ViewBag.TotalPage; pg++) {
+
+                                      if (ViewBag.page_this == pg) { link_page = "active page-item"; }
+                                      if (0 != pg)
+                                      {
+                                       <li  class="@link_page"><a   href="@Url.Action("Index", "Report", new {
+                                                                         page = pg,
+                                                                          CHASSIS_SEARCH = ViewBag.CHASSIS_SEARCH,
+                                                                                   CUSTOMER_SEARCH = ViewBag.CUSTOMER_SEARCH,
+                                                                                   DELALER_SEARCH = ViewBag.DELALER_SEARCH,
+                                                                                   STATUS_SEARCH = ViewBag.STATUS_SEARCH,
+                                                                                   ORDER_SEARCH = ViewBag.ORDER_SEARCH,
+                                                                                   INV_CUSTOMER_SEARCH = ViewBag.INV_CUSTOMER_SEARCH,
+                                                                                   MONTH_SEARCH = ViewBag.MONTH_SEARCH,
+                                                                                   YEAR_SEARCH = ViewBag.YEAR_SEARCH,
+                                                                                   STARTDAY_SEARCH = ViewBag.STARTDAY_SEARCH,
+                                                                                   ENDDAY_SEARCH = ViewBag.ENDDAY_SEARCH,
+                                                                                   MEI_CERTIF = ViewBag.MEI_CERTIF,
+                                                                                   LICENSE_CERTIF = ViewBag.LICENSE_CERTIF,
+                                                                                   NOT_MEI = ViewBag.NOT_MEI,
+                                                                                   NOT_LICENSE = ViewBag.NOT_LICENSE
+                                                                     })">@pg</a></li>
+                                      }
+                                      link_page = "page-item";
+                                      if (ViewBag.page_this == pg)
+                                      {
+                                        int pg1 = pg + 1;
+
+                                          if (ViewBag.TotalPage > pg)
+                                          {
+                                          <li class="@link_page"><a href="@Url.Action("Index", "Report", new {
+                                                                         page = pg + 1,
+                                                                           CHASSIS_SEARCH = ViewBag.CHASSIS_SEARCH,
+                                                                                   CUSTOMER_SEARCH = ViewBag.CUSTOMER_SEARCH,
+                                                                                   DELALER_SEARCH = ViewBag.DELALER_SEARCH,
+                                                                                   STATUS_SEARCH = ViewBag.STATUS_SEARCH,
+                                                                                   ORDER_SEARCH = ViewBag.ORDER_SEARCH,
+                                                                                   INV_CUSTOMER_SEARCH = ViewBag.INV_CUSTOMER_SEARCH,
+                                                                                   MONTH_SEARCH = ViewBag.MONTH_SEARCH,
+                                                                                   YEAR_SEARCH = ViewBag.YEAR_SEARCH,
+                                                                                   STARTDAY_SEARCH = ViewBag.STARTDAY_SEARCH,
+                                                                                   ENDDAY_SEARCH = ViewBag.ENDDAY_SEARCH,
+                                                                                   MEI_CERTIF = ViewBag.MEI_CERTIF,
+                                                                                   LICENSE_CERTIF = ViewBag.LICENSE_CERTIF,
+                                                                                   NOT_MEI = ViewBag.NOT_MEI,
+                                                                                   NOT_LICENSE = ViewBag.NOT_LICENSE
+                                                                     })">@pg1</a></li>
+                                          }
+                                          break;
+                                      }
+                                  }
+                                  <li  class="@link_page"><a  href="@Url.Action("Index", "Report",new {
+                                                                     page = ViewBag.total_page,
+                                                                     CHASSIS_SEARCH = ViewBag.CHASSIS_SEARCH,
+                                                                                   CUSTOMER_SEARCH = ViewBag.CUSTOMER_SEARCH,
+                                                                                   DELALER_SEARCH = ViewBag.DELALER_SEARCH,
+                                                                                   STATUS_SEARCH = ViewBag.STATUS_SEARCH,
+                                                                                   ORDER_SEARCH = ViewBag.ORDER_SEARCH,
+                                                                                   INV_CUSTOMER_SEARCH = ViewBag.INV_CUSTOMER_SEARCH,
+                                                                                   MONTH_SEARCH = ViewBag.MONTH_SEARCH,
+                                                                                   YEAR_SEARCH = ViewBag.YEAR_SEARCH,
+                                                                                   STARTDAY_SEARCH = ViewBag.STARTDAY_SEARCH,
+                                                                                   ENDDAY_SEARCH = ViewBag.ENDDAY_SEARCH,
+                                                                                   MEI_CERTIF = ViewBag.MEI_CERTIF,
+                                                                                   LICENSE_CERTIF = ViewBag.LICENSE_CERTIF,
+                                                                                   NOT_MEI = ViewBag.NOT_MEI,
+                                                                                   NOT_LICENSE = ViewBag.NOT_LICENSE
+                                                               })">Next</a></li>
+                              </ul>
+                          </nav>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+<!-- /.box-body -->
+        </div>
+
+
+            <!-- /.box -->
+            <script src="//adminlte.io/themes/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
+            <!-- jQuery UI 1.11.4 -->
+            <script src="//adminlte.io/themes/AdminLTE/bower_components/jquery-ui/jquery-ui.min.js"></script>
+            <!-- DataTables -->
+            <script src="//adminlte.io/themes/AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+            <script src="//adminlte.io/themes/AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+            <script type="text/jscript">
+
+                $('#MONTH_SEARCH').get(0).selectedIndex = '@ViewBag.MONTH_SEARCH';
+                $('#YEAR_SEARCH').get(0).selectedIndex = '@ViewBag.YEAR_SEARCH';
+                $('#YEAR_SEARCH').get(0).selectedIndex = '@ViewBag.YEAR_SEARCH';
+                $('#NOT_MEI').get(0).selectedIndex = '@ViewBag.NOT_MEI';
+                $('#NOT_LICENSE').get(0).selectedIndex = '@ViewBag.NOT_LICENSE';
+                $('#STARTDAY_SEARCH').val('@ViewBag.STARTDAY_SEARCH');
+                $('#ENDDAY_SEARCH').val('@ViewBag.ENDDAY_SEARCH');
+                var search = "";
+                search = "&&CHASSIS_SEARCH=" + '@ViewBag.CHASSIS_SEARCH';
+                search = search + "&&CUSTOMER_SEARCH=" + '@ViewBag.CUSTOMER_SEARCH';
+                search = search + "&&DELALER_SEARCH=" + '@ViewBag.DELALER_SEARCH';
+                search = search + "&&STATUS_SEARCH=" + '@ViewBag.STATUS_SEARCH';
+                search = search + "&&ORDER_SEARCH=" + '@ViewBag.ORDER_SEARCH';
+                search = search + "&&INV_CUSTOMER_SEARCH=" + '@ViewBag.INV_CUSTOMER_SEARCH';
+                search = search + "&&MONTH_SEARCH=" + '@ViewBag.MONTH_SEARCH';
+                search = search + "&&YEAR_SEARCH=" + '@ViewBag.YEAR_SEARCH';
+                search = search + "&&STARTDAY_SEARCH=" + '@ViewBag.STARTDAY_SEARCH';
+                search = search + "&&ENDDAY_SEARCH=" + '@ViewBag.ENDDAY_SEARCH';
+                search = search + "&&MEI_CERTIF=" + '@ViewBag.MEI_CERTIF';
+                search = search + "&&LICENSE_CERTIF=" + '@ViewBag.LICENSE_CERTIF';
+                search = search + "&&NOT_MEI=" + '@ViewBag.NOT_MEI';
+                search = search + "&&NOT_LICENSE=" + '@ViewBag.NOT_LICENSE';
+                $('#sort_ID_CHASSIS').change(function () {
+                    var sort_order = $('#sort_ID_CHASSIS').val();
+                    console.log(sort_order);
+                    var Sent = "?SORTAD=" + sort_order + "&SORTSQL=ID_CHASSIS";
+                    location.href = "/Report" + Sent + search;
+                });
+
+                $('#sort_INVOICE_CUSTOMER').change(function () {
+                    var sort_order = $('#sort_INVOICE_CUSTOMER').val();
+                    console.log(sort_order);
+                    var Sent = "?SORTAD=" + sort_order + "&SORTSQL=INVOICE_CUSTOMER";
+                    location.href = "/Report" + Sent + search;
+                });
+
+                $('#sort_ID_LICENSE').change(function () {
+                    var sort_order = $('#sort_ID_LICENSE').val();
+                    console.log(sort_order);
+                    var Sent = "?SORTAD=" + sort_order + "&SORTSQL=ID_LICENSE";
+                    location.href = "/Report" + Sent + search;
+                });
+
+                $('#sort_MEI').change(function () {
+                    var sort_order = $('#sort_MEI').val();
+                    console.log(sort_order);
+                    var Sent = "?SORTAD=" + sort_order + "&SORTSQL=MEI";
+                    location.href = "/Report" + Sent + search;
+                });
+
+                $('#sort_INSTALL_DATE').change(function () {
+                    var sort_order = $('#sort_INSTALL_DATE').val();
+                    console.log(sort_order);
+                    var Sent = "?SORTAD=" + sort_order + "&SORTSQL=INSTALL_DATE";
+                    location.href = "/Report" + Sent + search;
+                });
+
+                $('#sort_PRICE_R').change(function () {
+                    var sort_order = $('#sort_PRICE_R').val();
+                    console.log(sort_order);
+                    var Sent = "?SORTAD=" + sort_order + "&SORTSQL=PRICE_R";
+                    location.href = "/Report" + Sent + search;
+                });
+
+
+                $('#sort_INVOICE_COUNT').change(function () {
+                    var sort_order = $('#sort_INVOICE_COUNT').val();
+                    console.log(sort_order);
+                    var Sent = "?SORTAD=" + sort_order + "&SORTSQL=INVOICE_COUNT";
+                    location.href = "/Report" + Sent + search;
+                });
+
+
+                $('#sort_INVOICE_CUSTOMER').change(function () {
+                    var sort_order = $('#sort_INVOICE_CUSTOMER').val();
+                    console.log(sort_order);
+                    var Sent = "?SORTAD=" + sort_order + "&SORTSQL=INVOICE_CUSTOMER";
+                    location.href = "/Report" + Sent + search;
+                });
+
+                $('#sort_DEALER_CONTACT_NAME').change(function () {
+                    var sort_order = $('#sort_DEALER_CONTACT_NAME').val();
+                    console.log(sort_order);
+                    var Sent = "?SORTAD=" + sort_order + "&SORTSQL=DEALER_CONTACT_NAME";
+                    location.href = "/Report" + Sent + search;
+                });
+
+
+                $('#sort_PRICE').change(function () {
+                    var sort_order = $('#sort_DEALER_CONTACT_NAME').val();
+                    console.log(sort_order);
+                    var Sent = "?SORTAD=" + sort_order + "&SORTSQL=PRICE";
+                    location.href = "/Report" + Sent + search;
+                });
+                /*  $('#ButtonID').click(function () {
+                      alert("data" + $('#ButtonID').val());
+                      $('#hpopup').html($('#ButtonID').val());
+                  })*/
+                $("#STARTDAY_SEARCH").datepicker({
+                    autoclose: true,
+                    dateFormat: "dd/mm/yy"
+                });
+                $("#ENDDAY_SEARCH").datepicker({
+                    autoclose: true,
+                    dateFormat: "dd/mm/yy"
+                });
+
+                $("#up_date_invoice").datepicker({
+                    autoclose: true,
+                    dateFormat: "dd/mm/yy"
+                });
+                var Status_ = "";
+                var d_ = "";
+                var m_ = "";
+                var y_ = "";
+                $('#Status_').change(function () {
+                    Status_ = $('#Status_').val();
+                    console.log(Status_);
+                    $("#report_").attr("href", "/Report/ExcelOutput?Status_=" + Status_ + "&d_=" + d_ + "&m_=" + m_ + "&y_=" + y_);
+                })
+
+                $('#d_').change(function () {
+                    d_ = $('#d_').val();
+                    console.log(d_);
+                    $("#report_").attr("href", "/Report/ExcelOutput?Status_=" + Status_ + "&d_=" + d_ + "&m_=" + m_ + "&y_=" + y_);
+                })
+
+                $('#m_').change(function () {
+                    m_ = $('#m_').val();
+                    console.log(m_);
+                    $("#report_").attr("href", "/Report/ExcelOutput?Status_=" + Status_ + "&d_=" + d_ + "&m_=" + m_ + "&y_=" + y_);
+                })
+
+                $('#y_').change(function () {
+                    y_ = $('#y_').val();
+                    console.log(y_);
+                    $("#report_").attr("href", "/Report/ExcelOutput?Status_=" + Status_ + "&d_=" + d_ + "&m_=" + m_ + "&y_=" + y_);
+                })
+
+
+
+                function row_color() {
+
+                }
+                function list_Head(idcha) {
+
+                    $('#hpopup').html("รายละเอียด Chassis " + idcha);
+                    $('#idcha').val(idcha);
+                    var id_cha = idcha;
+                    var req = new XMLHttpRequest();
+                    var flag = "";
+
+
+                    var sendstr = '{"id_detail":"' + idcha + '"}';
+                    req.open('POST', '@Url.Action("RespondToDetail", "Report")', true);
+                    req.setRequestHeader('Content-Type', 'application/json');
+                    req.send(sendstr);
+                    req.onload = function () {
+                        var result = JSON.parse(req.responseText);
+                        console.log(result.foo);
+                        $('#flag').val(result.flag);
+                        $('#title').val(result.title);
+                        $('#textremark').val(result.textremark);
+
+                        var table_ = result.up_date_invoice_flag.split(",");
+                        var taxt_html = "";
+
+
+                        for (var i = 0; i < table_.length; i++) {
+                            if (table_[i] != "") {
+                                taxt_html = taxt_html + "<div class='row'><div class='col-lg-3'><input  size='10' type='text' id='" + i + "_inv'   name='" + i + "_inv' class='form-control col-lg-1' value =" + table_[i].split("(")[0] + "></input></div>"
+                                    + "<div class='col-lg-3'><input size='10' type='text' id='" + i + "_date'  name='" + i + "_date' class='form-control col-lg-1'  value =" + table_[i].split(")")[0].split("(")[1] + "></input></div>"
+                                    + "<div class='col-lg-3'> <button type='button'  onclick =\"Edit_Detail('" + i + "','" + idcha + "')\" class='btn btn-primary'>แก้ไข</button>"
+                                    + "</div>"
+                                    + "</div><br>";
+                            }
+
+                        }
+                        $('#table_invoice').html(taxt_html);
+                        $('#inv_no').val(result.invoice_flag);
+                        $('#inv_no_date').val(result.up_date_invoice_flag);
+                        $('#inv_no_price').val(result.up_date_flag_price);
+
+                    }
+
+
+                }
+
+                function Save_Detail() {
+                    var id_cha = $('#idcha').val();
+                    var flagval = $('#flag').val();
+                    var title = $('#title').val();
+                    var user_detail = $('#user_detail').val();
+                    var textremark = $('#textremark').val();
+                    var up_date_invoice = $('#up_date_invoice').val();
+                    var invoice_no = $('#invoice_no').val();
+
+                    var req = new XMLHttpRequest();
+                    var flag = "";
+                    if (id_cha.length < 1) { id_cha = "" }
+                    if (flagval.length < 1) { flagval = "" }
+                    if (title.length < 1) { title = "" }
+                    if (textremark.length < 1) { textremark = "" }
+                    if (up_date_invoice.length < 1) { up_date_invoice = "" }
+                    if (invoice_no.length < 1) { invoice_no = "" }
+                    console.log(invoice_no + "/" + up_date_invoice + "/" + textremark + "/" + title + "/" + flagval + "/" + id_cha)
+                    var sendstr = '{"id_detail":"' + id_cha + '","flag":"' + flagval + '","title":"' + title + '","user_detail":"' + user_detail + '","textremark":"' + textremark + '","up_date_invoice":"' + up_date_invoice + '","invoice_no":"' + invoice_no + '"}';
+                    req.open('POST', '@Url.Action("RespondToDetailSave", "Report")', true);
+                    req.setRequestHeader('Content-Type', 'application/json');
+                    req.send(sendstr);
+
+                    req.onload = function () {
+                        if (req.status >= 200 && req.status < 400) {
+                            $('#modal-info').modal('hide');
+
+                        } else {
+                            alert('We encountered an error!');
+                        }
+                    }
+                    req.send();
+                }
+                function Export_Report() {
+                    var id_cha = $('#idcha').val();
+                    var flagval = $('#flag').val();
+                    var title = $('#title').val();
+                    var user_detail = $('#user_detail').val();
+                    var textremark = $('#textremark').val();
+                    var up_date_invoice = $('#up_date_invoice').val();
+                    var invoice_no = $('#invoice_no').val();
+
+                    var req = new XMLHttpRequest();
+                    var flag = "";
+
+                    var sendstr = '{"id_detail":"' + id_cha + '","flag":"' + flagval + '","title":"' + title + '","user_detail":"' + user_detail + '","textremark":"' + textremark + '","up_date_invoice":"' + up_date_invoice + '","invoice_no":"' + invoice_no + '"}';
+                    req.open('POST', '@Url.Action("ExcelOutput", "Report")', true);
+                    req.setRequestHeader('Content-Type', 'application/json');
+                    req.send(sendstr);
+
+                    req.onload = function () {
+                        if (req.status >= 200 && req.status < 400) {
+                            $('#modal_1-info').modal('hide');
+
+                        } else {
+                            alert('We encountered an error!');
+                        }
+                    }
+                    req.send();
+                }
+
+                function Edit_Detail(pk, id_detail) {
+                    var InvNo_Full = $('#inv_no').val();
+                    var InvNo = $('#' + pk + '_inv').val();
+                    var index = parseInt(pk);
+                    $('#inv_no').val(InvNo_Full.replace(InvNo_Full.split(",")[index], InvNo));
+                    console.log(InvNo_Full.split(",")[index]);
+
+                    var InvDate_Full = $('#inv_no_date').val();
+                    var InvDate = $('#' + pk + '_date').val();
+                    $('#inv_no_date').val(InvDate_Full.replace(InvDate_Full.split(",")[index].split("(")[1].split(")")[0], InvDate).replace(InvDate_Full.split(",")[index].split("(")[0], InvNo));
+                    console.log(InvDate_Full.split(",")[index]);
+
+                    var id_cha = $('#idcha').val();
+                    var inv_no = $('#inv_no').val();
+                    var inv_no_date = $('#inv_no_date').val();
+                    var req = new XMLHttpRequest();
+                    var flag = "";
+
+                    var sendstr = '{"id_detail":"' + id_cha + '","inv_no":"' + inv_no + '","inv_no_date":"' + inv_no_date + '"}';
+                    req.open('POST', '@Url.Action("RespondToDetailEdit", "Report")', true);
+                    req.setRequestHeader('Content-Type', 'application/json');
+                    req.send(sendstr);
+
+                    req.onload = function () {
+                        if (req.status >= 200 && req.status < 400) {
+                            $('#modal-info').modal('hide');
+
+                        } else {
+                            alert('We encountered an error!');
+                        }
+                    }
+                    req.send();
+                }
+
+                $(function () {
+                    $('#example1').DataTable()
+                    $('#example2').DataTable({
+                        'paging': true,
+                        'lengthChange': false,
+                        'searching': false,
+                        'ordering': true,
+                        'info': true,
+                        'autoWidth': false
+                    })
+                })
+
+            </script>
+

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CSCLITEModelStoreContainer" CdmEntityContainer="CONN1_CSCLITE">
+    <EntitySetMapping Name="DLTChassisInvoice">
+      <EntityTypeMapping TypeName="CSCLITEModel.DLTChassisInvoice">
+        <MappingFragment StoreEntitySet="DLTChassisInvoice">
+          <ScalarProperty Name="INVOICE_NO_DATE" ColumnName="INVOICE_NO_DATE" />
+          <ScalarProperty Name="ID_MEI" ColumnName="ID_MEI" />
+          <ScalarProperty Name="ID_LICENSE" ColumnName="ID_LICENSE" />
+          <ScalarProperty Name="DEALER_CONTACT_PHONE" ColumnName="DEALER_CONTACT_PHONE" />
+          <ScalarProperty Name="DEALER_CONTACT_NAME" ColumnName="DEALER_CONTACT_NAME" />
+          <ScalarProperty Name="INSTALL_DATE" ColumnName="INSTALL_DATE" />
+          <ScalarProperty Name="YEAR_LOSE" ColumnName="YEAR_LOSE" />
+          <ScalarProperty Name="INVOICE_COUNT_LOSE" ColumnName="INVOICE_COUNT_LOSE" />
+          <ScalarProperty Name="INVOICE_NO" ColumnName="INVOICE_NO" />
+          <ScalarProperty Name="INVOICE_COUNT" ColumnName="INVOICE_COUNT" />
+          <ScalarProperty Name="ID_CHASSIS" ColumnName="ID_CHASSIS" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DLTChassisImport">
+      <EntityTypeMapping TypeName="CSCLITEModel.DLTChassisImport">
+        <MappingFragment StoreEntitySet="DLTChassisImport">
+          <ScalarProperty Name="ID_CHASSIS" ColumnName="ID_CHASSIS" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DLTLicenseImport">
+      <EntityTypeMapping TypeName="CSCLITEModel.DLTLicenseImport">
+        <MappingFragment StoreEntitySet="DLTLicenseImport">
+          <ScalarProperty Name="ID_LICENSE" ColumnName="ID_LICENSE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DLTMeiImport">
+      <EntityTypeMapping TypeName="CSCLITEModel.DLTMeiImport">
+        <MappingFragment StoreEntitySet="DLTMeiImport">
+          <ScalarProperty Name="ID_MEI" ColumnName="ID_MEI" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DLTChassisInvoiceImport">
+      <EntityTypeMapping TypeName="CSCLITEModel.DLTChassisInvoiceImport">
+        <MappingFragment StoreEntitySet="DLTChassisInvoiceImport">
+          <ScalarProperty Name="INVOICE_NO_DATE" ColumnName="INVOICE_NO_DATE" />
+          <ScalarProperty Name="INVOICE_NO" ColumnName="INVOICE_NO" />
+          <ScalarProperty Name="ID_CHASSIS" ColumnName="ID_CHASSIS" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DLTLicenseInvoiceImport">
+      <EntityTypeMapping TypeName="CSCLITEModel.DLTLicenseInvoiceImport">
+        <MappingFragment StoreEntitySet="DLTLicenseInvoiceImport">
+          <ScalarProperty Name="ID_CHASSIS" ColumnName="ID_CHASSIS" />
+          <ScalarProperty Name="INVOICE_NO" ColumnName="INVOICE_NO" />
+          <ScalarProperty Name="ID_LICENSE" ColumnName="ID_LICENSE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DLTMeiInvoiceImport">
+      <EntityTypeMapping TypeName="CSCLITEModel.DLTMeiInvoiceImport">
+        <MappingFragment StoreEntitySet="DLTMeiInvoiceImport">
+          <ScalarProperty Name="INVOICE_NO" ColumnName="INVOICE_NO" />
+          <ScalarProperty Name="ID_MEI" ColumnName="ID_MEI" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

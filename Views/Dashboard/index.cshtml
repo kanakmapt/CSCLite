@@ -1,0 +1,189 @@
+﻿@using CSCLite.Models
+@model IEnumerable<CSCLite.Models.DLTChassisInvoice>
+
+
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+            <a href="@Url.Action("Index", "Report",new { year = "", type ='0' })">
+            <div class="small-box bg-orange">
+                <div class="inner">
+                    <h3> @ViewBag.DLTChassis_InvoiceNot</h3>
+                    <p>สีส้ม:ไม่พบข้อมูล</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-ban"></i>
+                </div>
+
+            </div>
+            </a>
+       </div>
+
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <a href="@Url.Action("Index", "Report",new { year = "", type ='1' })">
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3> @ViewBag.DLTChassis_InvoiceOr</h3>
+                    <p>สีเหลือง:วางไม่ครบ</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-cut"></i>
+                </div>
+            </div>
+        </a>
+   </div>
+
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <a href="@Url.Action("Index", "Report",new { year = "", type ='2' })">
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3> @ViewBag.DLTChassis_InvoiceSc</h3>
+
+                    <p>สีเขียว:วางครบ</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-check-square-o"></i>
+                </div>
+
+            </div>
+            </a>
+            </div>
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <a href="@Url.Action("Index", "Report",new { year = "", type ='3' })">
+            <div class="small-box bg-purple">
+                <div class="inner">
+                    <h3> @ViewBag.DLTChassis_InvoiceNext</h3>
+                    <p>สีม่วง:วางเกิน</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-check-square-o"></i>
+                </div>
+            </div>
+            </a>
+        </div>
+    <div class="col-md-9 col-sm-6 col-xs-12">
+        <div class="">
+            <div class="box box-primary box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><i class="fa fa-calendar-check-o"></i> แยกตามปี</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                                    
+
+                    @foreach (var item in ViewBag.tb_group_year)
+                    {
+                        <div class="row">
+
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <a href="@Url.Action("Index", "Report", new { year = @item, type = '0' })">
+                                    <div class="info-box">
+                                        <span class="info-box-icon bg-orange"><i class="fa fa fa-ban "></i></span>
+                                        <div class="info-box-content">
+                                            @{var i1 = 543 + Convert.ToInt32(item);  string null_setup = "ไม่เคยวาง ปี "; if (Convert.ToInt32(item) == 1900) { null_setup = "(ยังไม่มีวันที่ติดตั้ง)"; }
+                                            }
+                                            <span class="info-box-text">@null_setup @i1 </span>
+                                            <span class="info-box-number">@Model.Where(a => a.INVOICE_NO == null && a.INSTALL_YEAR == @item).Count()</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <a href="@Url.Action("Index", "Report", new { year = @item, type = '1' })">
+                                    <div class="info-box">
+                                        <span class="info-box-icon bg-yellow"><i class="fa fa-cut "></i></span>
+
+                                        <div class="info-box-content">
+                                            @{var i2 = 543 + Convert.ToInt32(item); }
+                                            <span class="info-box-text">ขาด ปี  @i2 </span>
+                                            <span class="info-box-number">@Model.Where(a => a.INVOICE_NO != null && a.YEAR_LOSE > 0 && a.INSTALL_YEAR == @item).Count()</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                    </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <a href="@Url.Action("Index", "Report",new { year = @item , type ='2' })">
+                                    <div class="info-box">
+                                        <span class="info-box-icon bg-green"><i class="fa fa-check-square-o"></i></span>
+
+                                        <div class="info-box-content">
+                                              @{var i3 = 543 + Convert.ToInt32(item); }
+                                            <span class="info-box-text">ครบ ปี @i3</span>
+                                            <span class="info-box-number">@Model.Where(a => a.INVOICE_NO != null && a.YEAR_LOSE == 0 && a.INSTALL_YEAR == @item).Count()</span>
+                                        </div>
+                                    </div>
+                                </a>
+                          </div>
+                         
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <a href="@Url.Action("Index", "Report",new { year = @item , type ='3' })">
+                                    <div class="info-box">
+                                        <span class="info-box-icon bg-purple"><i class="fa fa-check-square-o"></i></span>
+
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">วางเกิน ปี @item</span>
+                                            <span class="info-box-number">@Model.Where(a => a.YEAR_LOSE < 0 && a.INSTALL_YEAR == @item).Count()</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                </div>
+                            </div>
+                    }
+                    <!-- /.box-body-->
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+   
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fa fa-car"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">จำนวน รถ ทั้งหมด</span>
+                <span class="info-box-number">@ViewBag.table_Chassis</span>
+            </div>
+        </div>
+
+       <br>
+        <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-book"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">จำนวน License ทั้งหมด</span>
+                <span class="info-box-number">@ViewBag.table_license</span>
+            </div>
+        </div>
+        <br>
+        <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="fa fa-mobile "></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">จำนวน อุปกรณ์ ทั้งหมด</span>
+                <span class="info-box-number">@ViewBag.table_Mei</span>
+            </div>
+        </div>
+
+    </div>
+   
+   
+   
+
+     <!-- /.box -->
+</div>
+
+
+    </div>
+ <br />
+        

@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CSCLITEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DLTDetailChassi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="STATUS_FLAG" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="REMARK" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ID_USERS" Type="Int32" />
+    <Property Name="TITLE_DETAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="INVOICE_FLAG" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ID_CHASSIS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UP_DATE_INVOICE_FLAG" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="UP_DATE" Type="DateTime" Precision="3" />
+    <Property Name="UP_DATE_PRICE_FLAG" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MEI" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="LICENSE" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_CUSTOMER" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DEALER_CONTACT_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CUSTOMER_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DLTChassisImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_CHASSIS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="DLTChassisInvoice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_CHASSIS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_COUNT" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_NO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_COUNT_LOSE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="YEAR_LOSE" Type="Int32" />
+    <Property Name="INSTALL_DATE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DEALER_CONTACT_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DEALER_CONTACT_PHONE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ID_LICENSE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ID_MEI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_NO_DATE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INSTALL_YEAR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_PRICE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CUSTOMER_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CUSTOMER_PHONE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_CUSTOMER" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_CUSTOMER_PHONE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CER_LICENSE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MEI_NOT_FOUND" Type="Int32" />
+    <Property Name="CER_MEI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS_CHASSIS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS_MEI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS_LICENSE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS_DLT" Type="Int32" />
+  </EntityType>
+  <EntityType Name="DLTChassisInvoiceImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_CHASSIS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_NO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_NO_DATE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_NO_PRICE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_PHONE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="DLTInvoice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="InvoiceNO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceOpenDate" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceDueDate" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceCustomerCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceCustomerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceContactName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceContactAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceReference" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoicePeriod" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceMonth" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceYear" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceAmountBeforeVat" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceVat" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceTotal" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceTotalPayment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceTotalRemain" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceTotalCreditNote" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceItemDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceItemBillQuantity" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceItemBillUnitPrice" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceItemBillAmount" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceProcess" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerContactName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerContactPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerContactEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectOpenDate" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectContractNO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectContractDate" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectContractExpireDate" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectQuotationNO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectQuotationDate" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectPurchaseOrderNO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectPurchaseOrderDate" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectPromotion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectGuarantee" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectGroup" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectSellType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectServiceType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectPrice" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectVat" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectNetPrice" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectTotalQuantity" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectPickupQuantity" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectRemainQuantity" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DLTLicenseImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_LICENSE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="DLTLicenseInvoiceImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_LICENSE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_NO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ID_CHASSIS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="DLTMeiImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_MEI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="DLTMeiInvoiceImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_MEI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_NO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ID_CHASSIS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_MEI_INVOICE_NO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DLTMeiInvoiceImportGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_MEI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_NO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ID_CHASSIS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="DLTUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="USERS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PASSWORD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityContainer Name="CONN_CSCLITE" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DLTDetailChassis" EntityType="Self.DLTDetailChassi" />
+    <EntitySet Name="DLTChassisImports" EntityType="Self.DLTChassisImport" />
+    <EntitySet Name="DLTChassisInvoices" EntityType="Self.DLTChassisInvoice" />
+    <EntitySet Name="DLTChassisInvoiceImports" EntityType="Self.DLTChassisInvoiceImport" />
+    <EntitySet Name="DLTInvoices" EntityType="Self.DLTInvoice" />
+    <EntitySet Name="DLTLicenseImports" EntityType="Self.DLTLicenseImport" />
+    <EntitySet Name="DLTLicenseInvoiceImports" EntityType="Self.DLTLicenseInvoiceImport" />
+    <EntitySet Name="DLTMeiImports" EntityType="Self.DLTMeiImport" />
+    <EntitySet Name="DLTMeiInvoiceImports" EntityType="Self.DLTMeiInvoiceImport" />
+    <EntitySet Name="DLTMeiInvoiceImportGroups" EntityType="Self.DLTMeiInvoiceImportGroup" />
+    <EntitySet Name="DLTUsers" EntityType="Self.DLTUser" />
+    <EntitySet Name="TABLE_REPORT_CUSTOMER" EntityType="CSCLITEModel.TABLE_REPORT_CUSTOMER" />
+    <EntitySet Name="DLTChassisInvoice_Mei" EntityType="CSCLITEModel.DLTChassisInvoice_Mei" />
+  </EntityContainer>
+  <EntityType Name="TABLE_REPORT_CUSTOMER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CUSTOMER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CONUT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DLTChassisInvoice_Mei">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_CHASSIS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_COUNT" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_NO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_COUNT_LOSE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="YEAR_LOSE" Type="Int32" />
+    <Property Name="INSTALL_DATE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DEALER_CONTACT_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DEALER_CONTACT_PHONE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ID_LICENSE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ID_MEI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_NO_DATE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INSTALL_YEAR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_PRICE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CUSTOMER_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CUSTOMER_PHONE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_CUSTOMER" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="INVOICE_CUSTOMER_PHONE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CER_LICENSE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MEI_NOT_FOUND" Type="Int32" />
+    <Property Name="CER_MEI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS_CHASSIS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS_MEI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS_LICENSE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="STATUS_DLT" Type="Int32" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+</Schema>

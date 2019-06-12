@@ -1,0 +1,580 @@
+﻿
+<div class="box">
+
+    <!-- /.box-header -->
+    <div class="box-body">
+
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+            <!-- /.box-header -->
+            <div class="box-body">
+
+                <div class="">
+                    <!-- /.box-body -->
+
+
+                    <div class="">
+                        <div class="box-header">
+
+                        </div>
+                        <div class="box box-primary box-solid">
+                            <div class="box-header with-border box-primary">
+                                <h3 class="box-title">
+                                    Search:-
+                                    <small class="label pull-right bg-green">สีเขียว:ครบ</small>
+                                    <small class="label pull-right bg-orange">สีส้ม:ขาด</small>
+                                    <small class="label pull-right bg-red">สีแดง:ไม่เคยวาง</small>
+                                    <small class="label pull-right bg-purple">สีม่วง:จ่ายล่วงหน้า</small>
+
+                                </h3>
+
+                                <div class="box-tools pull-right ">
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                </div>
+                                <!-- /.box-tools -->
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+
+                                <form asp-controller="Report" asp-action="Index" method="get">
+                                    <div class="col-lg-16">
+                                        <div class="input-group margin  col-sm-2">
+                                            <!-- /btn-group -->
+                                            <input type="text" class="form-control col-lg-2" id="Search_Chassis" name="Search_Chassis" placeholder="เลขที่รถ">
+                                            <div class="input-group-btn">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fa fa-fw fa-search"></i> ค้นหา
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="input-group margin  col-sm-2">
+                                            <!-- /btn-group -->
+                                            <input type="text" class="form-control col-lg-2" id="Search_Inv" name="Search_Inv" placeholder="ชื่อ Invoice">
+                                            <div class="input-group-btn">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fa fa-fw fa-search"></i> ค้นหา
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="input-group margin col-sm-2">
+                                            <!-- /btn-group -->
+                                            <input type="text" class="form-control " id="Search_Cut" name="Search_Cut" placeholder="จำนวนปี่ที่ขาด">
+                                            <div class="input-group-btn">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fa fa-fw fa-search"></i> ค้นหา
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="input-group margin  col-sm-2">
+                                            <!-- /btn-group -->
+
+                                            <select name="Search_year" id="Search_year" aria-controls="example1" class="form-control">
+                                                @foreach (var item in ViewBag.tb_group_year)
+                                                {
+                                                    <option value="@item">@item</option>
+                                                }
+                                            </select>
+                                            <div class="input-group-btn">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fa fa-fw fa-search"></i> ค้นหา
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="input-group margin  col-sm-2">
+
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        <i class="fa fa-fw fa-file-excel-o"></i> Execl
+                                                    </button>
+
+                                                </div>
+
+                                                <div class="col-lg-1">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        <i class="fa fa-fw fa-file-pdf-o"></i> PDF
+                                                    </button>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="input-group margin  col-sm-3">
+                                            <!-- /btn-group -->
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    เริ่ม
+                                                    <select name="Start_year" id="Start_year" aria-controls="example1" class="form-control">
+                                                        @foreach (var item in ViewBag.tb_group_year)
+                                                        {
+                                                            <option value="@item">@item</option>
+                                                        }
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    ถึง
+                                                    <br>@DateTime.Now.Year
+
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div>&nbsp;</div>
+                                                    <div class="input-group-btn">
+                                                        <button type="submit" class="btn btn-primary">
+                                                            <i class="fa fa-hourglass-2"></i> จำนวนปีในรายงาน
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </form>
+                                <br />
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover ">
+                                    <thead>
+                                        <tr role="row" style="background-color:#3c8dbc;color:white">
+                                            <th class="col-lg-2">รายปี</th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+
+                                            @foreach (var item in ViewBag.tb_group_year_report)
+                                            {
+
+                                                <th class="col-lg-2 text-center" colspan="3">@item.year </th>
+
+                                            }
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                            <th class="col-lg-2"></th>
+                                        </tr>
+                                        <tr role="row" style="background-color:#3c8dbc;color:white">
+                                            <th class="col-lg-2">ID_CHASSIS</th>
+                                            <th class="col-lg-2">ID_LICENSE</th>
+                                            <th class="col-lg-2">INSTALL_DATE</th>
+                                            <th class="col-lg-2">INVOICE_COUNT</th>
+
+                                            @foreach (var item in ViewBag.tb_group_year_report)
+                                            {
+
+
+                                                <th class="col-lg-2">InvoiceNo</th>
+                                                    <th class="col-lg-2">Date</th>
+                                                    <th class="col-lg-2">Price</th>
+
+                                            }
+                                            <th class="col-lg-2">DEALER_CONTACT_NAME</th>
+                                            <th class="col-lg-2">DEALER_CONTACT_PHONE</th>
+                                            <th class="col-lg-2">DETAIL</th>
+                                        </tr>
+
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (var @item_tbchassisInv in Model)
+                                        {
+                                            if (@item_tbchassisInv.YEAR_LOSE > 0 && @item_tbchassisInv.INVOICE_NO == null)
+                                            {
+
+                                                <tr role="row" class="odd bg-red">
+                                                    <td>@item_tbchassisInv.ID_CHASSIS</td>
+                                                    <td>@item_tbchassisInv.ID_LICENSE</td>
+                                                    <td>@item_tbchassisInv.INSTALL_DATE.Replace("12:00AM", "")</td>
+                                                    <td>@item_tbchassisInv.INVOICE_COUNT </td>
+                                                    @foreach (var item in ViewBag.tb_group_year_report)
+                                                    {
+
+                                                        int i = 1;
+                                                        foreach (var item_group in ViewBag.list_group_array_invoice)
+                                                        {
+
+                                                            if (item_group.ID_CHASSIS == item_tbchassisInv.ID_CHASSIS)
+                                                            {
+                                                                i++;
+
+                                                                String inv = "";
+                                                                String inv_year = "";
+                                                                String inv_date = "";
+                                                                String price = "";
+                                                                String inv_price = "";
+                                                                inv = item_group.ID_INVOICE;
+                                                                inv_date = item_group.DATE_INVOICE;
+                                                                inv_year = item_group.YEAR_INVOICE;
+                                                                inv_price = item_group.PRICE_INVOICE;
+                                                                price = "x";
+                                                                <td>@inv</td>
+                                                                    <td>@inv_date</td>
+                                                                    <td>@inv_price</td>
+                                                            }
+                                                            if (i.ToString() == item.count)
+                                                            {
+
+                                                                break;
+                                                            }
+                                                        }
+                                                        break;
+                                                    }
+                                                    <td>@item_tbchassisInv.DEALER_CONTACT_NAME </td>
+                                                    <td>@item_tbchassisInv.DEALER_CONTACT_PHONE</td>
+
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary" onclick="list_Head(@item_tbchassisInv.ID)" data-toggle="modal" data-target="#modal-info">
+                                                            Detail
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                            if (@item_tbchassisInv.YEAR_LOSE > 0 && @item_tbchassisInv.INVOICE_NO != null)
+                                            {
+
+
+                                                <tr role="row" class="odd bg-orange">
+                                                    <td>@item_tbchassisInv.ID_CHASSIS</td>
+                                                    <td>@item_tbchassisInv.ID_LICENSE</td>
+                                                    <td>@item_tbchassisInv.INSTALL_DATE</td>
+                                                    <td>@item_tbchassisInv.INVOICE_COUNT </td>
+                                                    @foreach (var item in ViewBag.tb_group_year_report)
+                                                    {
+
+                                                        int i = 1;
+                                                        foreach (var item_group in ViewBag.list_group_array_invoice)
+                                                        {
+
+                                                            if (item_group.ID_CHASSIS == item_tbchassisInv.ID_CHASSIS)
+                                                            {
+                                                                i++;
+
+                                                                String inv = "";
+                                                                String inv_year = "";
+                                                                String inv_date = "";
+                                                                String price = "";
+                                                                String inv_price = "";
+                                                                inv = item_group.ID_INVOICE;
+                                                                inv_date = item_group.DATE_INVOICE;
+                                                                inv_year = item_group.YEAR_INVOICE;
+                                                                inv_price = item_group.PRICE_INVOICE;
+                                                                price = "x";
+                                                                <td>@inv</td>
+                                                                    <td>@inv_date</td>
+                                                                    <td>@inv_price</td>
+                                                            }
+                                                            if (i.ToString() == item.count)
+                                                            {
+
+                                                                break;
+                                                            }
+                                                        }
+                                                        break;
+                                                    }
+                                                    <td>@item_tbchassisInv.DEALER_CONTACT_NAME </td>
+                                                    <td>@item_tbchassisInv.DEALER_CONTACT_PHONE</td>
+
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary" onclick="list_Head(@item_tbchassisInv.ID)" data-toggle="modal" data-target="#modal-info">
+                                                            Detail
+                                                        </button>
+                                                    </td>
+
+                                                </tr>
+                                            }
+
+                                            if (@item_tbchassisInv.YEAR_LOSE == 0)
+                                            {
+
+                                                <tr role="row" class="odd bg-green">
+                                                    <td>@item_tbchassisInv.ID_CHASSIS</td>
+                                                    <td>@item_tbchassisInv.ID_LICENSE</td>
+                                                    <td>@item_tbchassisInv.INSTALL_DATE.Replace("12:00AM", "")</td>
+                                                    <td>@item_tbchassisInv.INVOICE_COUNT </td>
+                                                    @foreach (var item in ViewBag.tb_group_year_report)
+                                                    {
+
+                                                        int i = 1;
+                                                        foreach (var item_group in ViewBag.list_group_array_invoice)
+                                                        {
+
+                                                            if (item_group.ID_CHASSIS == item_tbchassisInv.ID_CHASSIS)
+                                                            {
+                                                                i++;
+
+                                                                String inv = "";
+                                                                String inv_year = "";
+                                                                String inv_date = "";
+                                                                String price = "";
+                                                                String inv_price = "";
+                                                                inv = item_group.ID_INVOICE;
+                                                                inv_date = item_group.DATE_INVOICE;
+                                                                inv_year = item_group.YEAR_INVOICE;
+                                                                inv_price = item_group.PRICE_INVOICE;
+                                                                price = "x";
+                                                                <td>@inv</td>
+                                                                    <td>@inv_date</td>
+                                                                    <td>@inv_price</td>
+                                                            }
+                                                            if (i.ToString() == item.count)
+                                                            {
+
+                                                                break;
+                                                            }
+                                                        }
+                                                        break;
+                                                    }
+                                                    <td>@item_tbchassisInv.DEALER_CONTACT_NAME </td>
+                                                    <td>@item_tbchassisInv.DEALER_CONTACT_PHONE</td>
+
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary" onclick="list_Head(@item_tbchassisInv.ID)" data-toggle="modal" data-target="#modal-info">
+                                                            Detail
+                                                        </button>
+                                                    </td>
+
+                                                </tr>
+                                            }
+
+                                            if (@item_tbchassisInv.YEAR_LOSE < 0)
+                                            {
+
+                                                <tr role="row" class="odd bg-purple">
+                                                    <td>@item_tbchassisInv.ID_CHASSIS</td>
+                                                    <td>@item_tbchassisInv.ID_LICENSE</td>
+                                                    <td>@item_tbchassisInv.INSTALL_DATE.Replace("12:00AM", "")</td>
+                                                    <td>@item_tbchassisInv.INVOICE_COUNT </td>
+                                                    @foreach (var item in ViewBag.tb_group_year_report)
+                                                    {
+
+                                                        int i = 1;
+                                                        foreach (var item_group in ViewBag.list_group_array_invoice)
+                                                        {
+
+                                                            if (item_group.ID_CHASSIS == item_tbchassisInv.ID_CHASSIS)
+                                                            {
+                                                                i++;
+
+                                                                String inv = "";
+                                                                String inv_year = "";
+                                                                String inv_date = "";
+                                                                String price = "";
+                                                                String inv_price = "";
+                                                                inv = item_group.ID_INVOICE;
+                                                                inv_date = item_group.DATE_INVOICE;
+                                                                inv_year = item_group.YEAR_INVOICE;
+                                                                inv_price = item_group.PRICE_INVOICE;
+                                                                price = "x";
+                                                                <td>@inv</td>
+                                                                    <td>@inv_date</td>
+                                                                    <td>@inv_price</td>
+                                                            }
+                                                            if (i.ToString() == item.count)
+                                                            {
+
+                                                                break;
+                                                            }
+                                                        }
+                                                        break;
+                                                    }
+                                                  
+
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary" onclick="list_Head(@item_tbchassisInv.ID)" data-toggle="modal" data-target="#modal-info">
+                                                            Detail
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            }
+
+
+
+                                        }
+                                        <div class="modal modal fade" id="modal-info" name="modal-info">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-primary">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h4 class="modal-title" id="hpopup" name="hpopup"></h4>
+                                                    </div>
+
+                                                    <input id="idcha" name="idcha" type="hidden"></input>
+                                                    <div class="box-body">
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label for="" class="col-sm-3 control-label">แสดง/ซ่อน</label>
+                                                                <div class="col-sm-10">
+                                                                    <select id="flag" name="flag" class="form-control">
+                                                                        <option value="1">แสดง</option>
+                                                                        <option value="0">ไม่แสดง</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label for="" class="col-sm-3 control-label">หัวข้อ</label>
+
+                                                                <div class="col-sm-10">
+                                                                    <input name="title" id="title" type="text" class="form-control" id="inputPassword3" size="50" maxlength="100">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <label for="" class="col-sm-10 control-label">รายละเอียด</label>
+
+                                                                <div class="col-sm-10">
+                                                                    <textarea cols="45" name="textremark" id="textremark" rows="20" class="form-control"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="form-group">
+
+
+                                                                <div class="col-sm-10">
+
+                                                                    <input type="hidden" name="user_detail" id="user_detail" class="form-control" id="inputPassword3" size="50" value="@ViewBag.userid" maxlength="100">
+
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+
+                                                            <div class="col-lg-3">
+                                                                <button onclick="Save_Detail()" class="btn btn-primary btn-block btn-flat">บันทึก</button>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+                                        <!-- /.modal -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <br>
+                            <div class="row text-right">
+                                <div id="example1_filter" class="dataTables_filter">
+                                </div>
+
+                                <div class="dataTables_length" id="example1_length">
+                                    <label>
+                                        <select name="pageSize" id="pageSize" aria-controls="example1" class="form-control input-sm">
+                                            <option value="10">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                    </label>
+                                    <input type="text" id="mytext">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <br>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <script src="//adminlte.io/themes/AdminLTE/bower_components/jquery/dist/jquery.min.js"></script>
+            <!-- jQuery UI 1.11.4 -->
+            <script src="//adminlte.io/themes/AdminLTE/bower_components/jquery-ui/jquery-ui.min.js"></script>
+
+            <script type="text/jscript">
+          /*  $('#ButtonID').click(function () {
+                alert("data" + $('#ButtonID').val());
+                $('#hpopup').html($('#ButtonID').val());
+            })*/
+
+
+           function list_Head(idcha) {
+
+                $('#hpopup').html("รายละเอียด Chassis " + idcha);
+                $('#idcha').val(idcha);
+                var id_cha = idcha;
+                var req = new XMLHttpRequest();
+                var flag = "";
+
+
+                var sendstr = '{"id_detail":"' + idcha + '"}';
+                req.open('POST', '@Url.Action("RespondToDetail", "Report")', true);
+                req.setRequestHeader('Content-Type', 'application/json');
+                req.send(sendstr);
+                req.onload = function () {
+                    var result = JSON.parse(req.responseText);
+                    console.log(result.foo);
+                    $('#flag').val(result.flag);
+                    $('#title').val(result.title);
+                    $('#textremark').val(result.textremark);
+
+                }
+                /*
+                req.onload = function () {
+                    if (req.status >= 200 && req.status < 400) {
+                        alert(req.responseText);
+
+                    } else {
+                        alert('We encountered an error!');
+                    }
+                }
+                req.send();*/
+           }
+
+           function Save_Detail() {
+               var id_cha = $('#idcha').val();
+               var flagval = $('#flag').val();
+               var title = $('#title').val();
+               var user_detail = $('#user_detail').val();
+               var textremark = $('#textremark').val();
+               var req = new XMLHttpRequest();
+               var flag = "";
+
+               var sendstr = '{"id_detail":"' + id_cha + '","flag":"' + flagval + '","title":"' + title + '","user_detail":"' + user_detail + '","textremark":"' + textremark + '"}';
+               req.open('POST', '@Url.Action("RespondToDetailSave", "Report")', true);
+               req.setRequestHeader('Content-Type', 'application/json');
+               req.send(sendstr);
+
+
+
+               req.onload = function () {
+                   if (req.status >= 200 && req.status < 400) {
+                       alert("บันทึกเรียบร้อย");
+
+                   } else {
+                       alert('We encountered an error!');
+                   }
+               }
+               req.send();
+           }
+
+
+            </script>

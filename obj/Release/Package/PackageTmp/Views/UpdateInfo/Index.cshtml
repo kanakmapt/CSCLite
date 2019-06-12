@@ -1,0 +1,521 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title></title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.8/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-drag-and-drop-lists/2.1.0/angular-drag-and-drop-lists.js"></script>
+
+
+    <link href="http://localhost/Content/css/style.css" rel="stylesheet" />
+</head>
+
+@using (Html.BeginForm("Index", "UpdateInfo", FormMethod.Post, new { id = "" }))
+{
+
+<body ng-app="app" ng-controller="ctrl" >
+    <div class="panel panel-info">
+        <br>
+       
+        <div class="box-body">
+            <div class="simpleDemo row">
+
+                <div class="col-md-8">
+                    <div class="row">
+
+                        <div class="col-md-5">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <div class="btn-group pull-right">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                                    </div>
+                                    <h3 class="panel-title">ค้นหา INVOICE</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="">
+                                        <div class="row">
+                                            <div class="col-md-4"> ชื่อลูกค้า </div>
+                                               <div class="col-md-8">
+                                                   <div class="autocomplete" style="width:100%" >
+                                                       <input id="INOVICE_NAME" type="text" name="INOVICE_NAME"  class="form-control" autocomplete="off" >
+                                                   </div>
+                                            
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4"> INOVICE </div>
+                                            <div class="col-md-8">
+                                                <div class="autocomplete" style="width:100%">
+                                                    <input id="INOVICE_NO" type="text" name="INOVICE_NO" class="form-control" autocomplete="off">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4">วัน</div>
+                                            <div class="col-md-8"> <input type="text"  id="INOVICE_DAY" name="INOVICE_DAY"  class="form-control"/> </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4"> เดื่อน</div>
+                                            <div class="col-md-8"> <input type="text"  id="INOVICE_MONTH" name="INOVICE_MONTH"  class="form-control" /> </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4">ปี</div>
+                                            <div class="col-md-8"> <input type="text"  id="INOVICE_YEAR" name="INOVICE_YEAR"  class="form-control" /> </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-8">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fa fa-hourglass-2"></i> ค้นหา
+                                                </button>
+                                            </div>
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+               
+
+                        <div ng-repeat="(listName, list) in models.lists" class="col-md-3" style="height: 500px; overflow-y: scroll;">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <div class="btn-group pull-right">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="addToList(list)"></span>
+                                    </div>
+
+                                    <h3 class="panel-title">Inovice {{listName}}  {{listName ? 'varIsTrue' : 'varIsFalse'}}  </h3>
+
+                                </div>
+                                <div class="panel-body">
+
+                                    <!-- The dnd-list directive allows to drop elements into it. The dropped data will be added to the referenced list -->
+                                    <ul dnd-list="list" class="ng-scope">
+                                        <!-- The dnd-draggable directive makes an element draggable and will
+                                             transfer the object that was assigned to it. If an element was
+                                             dragged away, you have to remove it from the original list
+                                             yourself using the dnd-moved attribute -->
+                                        <li ng-repeat="item in list" dnd-draggable="item" dnd-moved="list.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}" draggable="true">
+                                            <a class="close" ng-click="removeFromList(list, $index)">×</a>
+                                            <a class="close" ng-click="cloneItem(list, $index)">=</a>
+                                            <edit-in-place value="item.label"></edit-in-place>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-5">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <div class="btn-group pull-right">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                    </div>
+                                    <h3 class="panel-title">ค้นหา INVOICE</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="">
+                                        <div class="row">
+                                            <div class="col-md-4"> ชื่อลูกค้า MEI </div>
+                                            <div class="col-md-8">
+                                                <div class="autocomplete" style="width:100%">
+                                                    <input id="MEI_NAME" type="text" name="MEI_NAME" class="form-control" autocomplete="off">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4"> MEI </div>
+                                            <div class="col-md-8">
+                                                <div class="autocomplete" style="width:100%">
+                                                    <input id="MEI_NO" type="text" name="MEI_NO" class="form-control" autocomplete="off">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4">วัน</div>
+                                            <div class="col-md-8"> <input type="text" id="MEI_DAY" name="MEI_DAY" class="form-control" /> </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4"> เดื่อน</div>
+                                            <div class="col-md-8"> <input type="text" id="MEI_MONTH" name="MEI_MONTH" class="form-control" /> </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4">ปี</div>
+                                            <div class="col-md-8"> <input type="text" id="MEI_YEAR" name="MEI_YEAR" class="form-control" /> </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-8">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fa fa-hourglass-2"></i> ค้นหา
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              
+                </div>
+
+                
+                
+                <div class="col-md-4" style="height: 500px; overflow-y: scroll;">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Generated Model</h3>
+                        </div>
+                        <div class="panel-body">
+                            <pre class="code">{{modelAsJson}}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+                    }
+</html>
+<script type="text/javascript">
+
+var
+	app = angular.module('app', ['dndLists'])
+	, $s
+	;
+  app.directive('editInPlace', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      value: '='
+    },
+    template: '<span ng-dblclick="edit()" ng-bind="value"></span><input ng-model="value"></input>',
+    link: function($scope, element, attrs) {
+      // Let's get a reference to the input element, as we'll want to reference it.
+      var inputElement = angular.element(element.children()[1]);
+
+      // This directive should have a set class so we can style it.
+      element.addClass('edit-in-place');
+
+      // Initially, we're not editing.
+      $scope.editing = false;
+
+      // ng-click handler to activate edit-in-place
+      $scope.edit = function() {
+        $scope.editing = true;
+
+        // We control display through a class on the directive itself. See the CSS.
+        element.addClass('active');
+
+        // And we must focus the element.
+        // `angular.element()` provides a chainable array, like jQuery so to access a native DOM function,
+        // we have to reference the first element in the array.
+        inputElement[0].focus();
+      };
+
+      // When we leave the input, we're done editing.
+      inputElement.prop('onblur', function() {
+        $scope.editing = false;
+        element.removeClass('active');
+      });
+    }
+  };
+});
+
+var array = @Html.Raw(Json.Encode(@ViewBag.DLTInvoice));
+
+
+app.controller('ctrl', function($scope) {
+		$s = $scope;
+  $scope.models = {
+    selected: null,
+    lists: {
+      "SELECT": [],
+      "UPDATE": []
+    }
+  };
+
+
+  var array = @Html.Raw(Json.Encode(@ViewBag.DLTInvoice));
+  for(var i = 0; i < array.length; i++) {
+
+      $scope.models.lists.SELECT.push({
+          label: array[i]
+      });
+
+      console.log(array[i])
+  }
+
+  // Generate initial model
+  for (var i = 1; i <= 3; ++i) {
+   /* $scope.models.lists.A.push({
+      label: "Item ee" + i
+    });
+    $scope.models.lists.B.push({
+      label: "Item B" + i
+    });*/
+  }
+
+  $scope.addToList = function(list) {
+    var
+      i = {
+        label: "Item " + (list.length + 1)
+      };
+    list.push(i);
+
+  }
+
+
+  $scope.cloneItem  = function(list, index) {
+    var
+      //o = { label : list[index].label+"-1"};
+	  o = angular.copy(list[index]);
+
+	o.label = o.label+"-1";
+    list.splice( index + 1, 0, o );
+  //  $scope.$apply();
+  }
+  $scope.removeFromList = function(list, index) {
+    list.splice(index, 1);
+  }
+
+  $scope.list = $scope.models.lists.SELECT;
+
+  // Model to JSON for demo purpose
+  $scope.$watch('models', function(model) {
+    $scope.modelAsJson = angular.toJson(model, true);
+  }, true);
+  $s.models.selected = $s.models.lists["SELECT"][1];
+});
+    /**XX MEI*/
+
+    
+    var array_CUS = @Html.Raw(Json.Encode(@ViewBag.Customer));
+
+    var countries = array_CUS
+     function autocomplete(inp, arr) {
+        /*the autocomplete function takes two arguments,
+        the text field element and an array of possible autocompleted values:*/
+        var currentFocus;
+        /*execute a function when someone writes in the text field:*/
+        inp.addEventListener("input", function(e) {
+            var a, b, i, val = this.value;
+            /*close any already open lists of autocompleted values*/
+            closeAllLists();
+            if (!val) { return false;}
+            currentFocus = -1;
+            /*create a DIV element that will contain the items (values):*/
+            a = document.createElement("DIV");
+            a.setAttribute("id", this.id + "autocomplete-list");
+            a.setAttribute("class", "autocomplete-items");
+            /*append the DIV element as a child of the autocomplete container:*/
+            this.parentNode.appendChild(a);
+            /*for each item in the array...*/
+            for (i = 0; i < arr.length; i++) {
+                /*check if the item starts with the same letters as the text field value:*/
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                    /*create a DIV element for each matching element:*/
+                    b = document.createElement("DIV");
+                    /*make the matching letters bold:*/
+                    b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                    b.innerHTML += arr[i].substr(val.length);
+                    /*insert a input field that will hold the current array item's value:*/
+                    b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                    /*execute a function when someone clicks on the item value (DIV element):*/
+                    b.addEventListener("click", function(e) {
+                        /*insert the value for the autocomplete text field:*/
+                        inp.value = this.getElementsByTagName("input")[0].value;
+                        /*close the list of autocompleted values,
+                        (or any other open lists of autocompleted values:*/
+                        closeAllLists();
+                    });
+                    a.appendChild(b);
+                }
+            }
+        });
+        /*execute a function presses a key on the keyboard:*/
+        inp.addEventListener("keydown", function(e) {
+            var x = document.getElementById(this.id + "autocomplete-list");
+            if (x) x = x.getElementsByTagName("div");
+            if (e.keyCode == 40) {
+                /*If the arrow DOWN key is pressed,
+                increase the currentFocus variable:*/
+                currentFocus++;
+                /*and and make the current item more visible:*/
+                addActive(x);
+            } else if (e.keyCode == 38) { //up
+                /*If the arrow UP key is pressed,
+                decrease the currentFocus variable:*/
+                currentFocus--;
+                /*and and make the current item more visible:*/
+                addActive(x);
+            } else if (e.keyCode == 13) {
+                /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                e.preventDefault();
+                if (currentFocus > -1) {
+                    /*and simulate a click on the "active" item:*/
+                    if (x) x[currentFocus].click();
+                }
+            }
+        });
+        function addActive(x) {
+            /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            /*add class "autocomplete-active":*/
+            x[currentFocus].classList.add("autocomplete-active");
+        }
+        function removeActive(x) {
+            /*a function to remove the "active" class from all autocomplete items:*/
+            for (var i = 0; i < x.length; i++) {
+                x[i].classList.remove("autocomplete-active");
+            }
+        }
+        function closeAllLists(elmnt) {
+            /*close all autocomplete lists in the document,
+            except the one passed as an argument:*/
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+                if (elmnt != x[i] && elmnt != inp) {
+                    x[i].parentNode.removeChild(x[i]);
+                }
+            }
+        }
+        /*execute a function when someone clicks in the document:*/
+        document.addEventListener("click", function (e) {
+            closeAllLists(e.target);
+        });
+     }
+
+
+     var array_INV = @Html.Raw(Json.Encode(@ViewBag.Invoice_));
+
+    var countries_INV = array_INV
+     function autocomplete_INV(inp, arr) {
+         /*the autocomplete function takes two arguments,
+         the text field element and an array of possible autocompleted values:*/
+         var currentFocus;
+         /*execute a function when someone writes in the text field:*/
+         inp.addEventListener("input", function(e) {
+             var a, b, i, val = this.value;
+             /*close any already open lists of autocompleted values*/
+             closeAllLists();
+             if (!val) { return false;}
+             currentFocus = -1;
+             /*create a DIV element that will contain the items (values):*/
+             a = document.createElement("DIV");
+             a.setAttribute("id", this.id + "autocomplete-list");
+             a.setAttribute("class", "autocomplete-items");
+             /*append the DIV element as a child of the autocomplete container:*/
+             this.parentNode.appendChild(a);
+             /*for each item in the array...*/
+             for (i = 0; i < arr.length; i++) {
+                 /*check if the item starts with the same letters as the text field value:*/
+                 if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                     /*create a DIV element for each matching element:*/
+                     b = document.createElement("DIV");
+                     /*make the matching letters bold:*/
+                     b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                     b.innerHTML += arr[i].substr(val.length);
+                     /*insert a input field that will hold the current array item's value:*/
+                     b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                     /*execute a function when someone clicks on the item value (DIV element):*/
+                     b.addEventListener("click", function(e) {
+                         /*insert the value for the autocomplete text field:*/
+                         inp.value = this.getElementsByTagName("input")[0].value;
+                         /*close the list of autocompleted values,
+                         (or any other open lists of autocompleted values:*/
+                         closeAllLists();
+                     });
+                     a.appendChild(b);
+                 }
+             }
+         });
+         /*execute a function presses a key on the keyboard:*/
+         inp.addEventListener("keydown", function(e) {
+             var x = document.getElementById(this.id + "autocomplete-list");
+             if (x) x = x.getElementsByTagName("div");
+             if (e.keyCode == 40) {
+                 /*If the arrow DOWN key is pressed,
+                 increase the currentFocus variable:*/
+                 currentFocus++;
+                 /*and and make the current item more visible:*/
+                 addActive(x);
+             } else if (e.keyCode == 38) { //up
+                 /*If the arrow UP key is pressed,
+                 decrease the currentFocus variable:*/
+                 currentFocus--;
+                 /*and and make the current item more visible:*/
+                 addActive(x);
+             } else if (e.keyCode == 13) {
+                 /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                 e.preventDefault();
+                 if (currentFocus > -1) {
+                     /*and simulate a click on the "active" item:*/
+                     if (x) x[currentFocus].click();
+                 }
+             }
+         });
+         function addActive(x) {
+             /*a function to classify an item as "active":*/
+             if (!x) return false;
+             /*start by removing the "active" class on all items:*/
+             removeActive(x);
+             if (currentFocus >= x.length) currentFocus = 0;
+             if (currentFocus < 0) currentFocus = (x.length - 1);
+             /*add class "autocomplete-active":*/
+             x[currentFocus].classList.add("autocomplete-active");
+         }
+         function removeActive(x) {
+             /*a function to remove the "active" class from all autocomplete items:*/
+             for (var i = 0; i < x.length; i++) {
+                 x[i].classList.remove("autocomplete-active");
+             }
+         }
+         function closeAllLists(elmnt) {
+             /*close all autocomplete lists in the document,
+             except the one passed as an argument:*/
+             var x = document.getElementsByClassName("autocomplete-items");
+             for (var i = 0; i < x.length; i++) {
+                 if (elmnt != x[i] && elmnt != inp) {
+                     x[i].parentNode.removeChild(x[i]);
+                 }
+             }
+         }
+         /*execute a function when someone clicks in the document:*/
+         document.addEventListener("click", function (e) {
+             closeAllLists(e.target);
+         });
+     }
+</script>
+<script>
+    autocomplete(document.getElementById("INOVICE_NAME"), countries);
+</script>
+<script>
+    autocomplete(document.getElementById("INOVICE_NO"), countries_INV);
+</script>

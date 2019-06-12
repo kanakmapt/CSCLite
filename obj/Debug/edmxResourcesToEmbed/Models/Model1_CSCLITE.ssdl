@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CSCLITEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CSCLITE.dbo.DLTChassisImport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTChassisImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_CHASSIS" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DLTChassisInvoice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_CHASSIS" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_COUNT" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_NO" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_COUNT_LOSE" Type="nvarchar" MaxLength="255" />
+    <Property Name="YEAR_LOSE" Type="nvarchar" MaxLength="255" />
+    <Property Name="INSTALL_DATE" Type="nvarchar" MaxLength="255" />
+    <Property Name="DEALER_CONTACT_NAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="DEALER_CONTACT_PHONE" Type="nvarchar" MaxLength="255" />
+    <Property Name="ID_LICENSE" Type="nvarchar" MaxLength="255" />
+    <Property Name="ID_MEI" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_NO_DATE" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CSCLITE.dbo.DLTChassisInvoiceImport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTChassisInvoiceImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_CHASSIS" Type="nvarchar" MaxLength="50" />
+    <Property Name="INVOICE_NO" Type="nvarchar" MaxLength="100" />
+    <Property Name="INVOICE_NO_DATE" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'CSCLITE.dbo.DLTInvoice' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="DLTInvoice">
+          <Property Name="InvoiceNO" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceOpenDate" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceDueDate" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceCustomerCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceCustomerName" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceContactName" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceContactAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceReference" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoicePeriod" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceMonth" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceYear" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceAmountBeforeVat" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceVat" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceTotal" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceTotalPayment" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceTotalRemain" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceTotalCreditNote" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceItemDescription" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceItemBillQuantity" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceItemBillUnitPrice" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceItemBillAmount" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceType" Type="nvarchar" MaxLength="255" />
+          <Property Name="InvoiceProcess" Type="nvarchar" MaxLength="255" />
+          <Property Name="CustomerCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="255" />
+          <Property Name="CustomerAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="CustomerContactName" Type="nvarchar" MaxLength="255" />
+          <Property Name="CustomerContactPhone" Type="nvarchar" MaxLength="255" />
+          <Property Name="CustomerContactEmail" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectOpenDate" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectContractNO" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectContractDate" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectContractExpireDate" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectQuotationNO" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectQuotationDate" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectPurchaseOrderNO" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectPurchaseOrderDate" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectPromotion" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectGuarantee" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectRemark" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectType" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectGroup" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectSellType" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectServiceType" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectPrice" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectVat" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectNetPrice" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectTotalQuantity" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectPickupQuantity" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProjectRemainQuantity" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CSCLITE.dbo.DLTLicenseImport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTLicenseImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_LICENSE" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CSCLITE.dbo.DLTLicenseInvoiceImport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTLicenseInvoiceImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_LICENSE" Type="nvarchar" MaxLength="50" />
+    <Property Name="INVOICE_NO" Type="nvarchar" MaxLength="100" />
+    <Property Name="ID_CHASSIS" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CSCLITE.dbo.DLTMeiImport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTMeiImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_MEI" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CSCLITE.dbo.DLTMeiInvoiceImport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTMeiInvoiceImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_MEI" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_NO" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityContainer Name="CSCLITEModelStoreContainer">
+    <EntitySet Name="DLTChassisInvoice" EntityType="Self.DLTChassisInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DLTChassisImport" EntityType="Self.DLTChassisImport" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTChassisImport].[ID] AS [ID], 
+    [DLTChassisImport].[ID_CHASSIS] AS [ID_CHASSIS]
+    FROM [dbo].[DLTChassisImport] AS [DLTChassisImport]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DLTChassisInvoiceImport" EntityType="Self.DLTChassisInvoiceImport" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTChassisInvoiceImport].[ID] AS [ID], 
+    [DLTChassisInvoiceImport].[ID_CHASSIS] AS [ID_CHASSIS], 
+    [DLTChassisInvoiceImport].[INVOICE_NO] AS [INVOICE_NO], 
+    [DLTChassisInvoiceImport].[INVOICE_NO_DATE] AS [INVOICE_NO_DATE]
+    FROM [dbo].[DLTChassisInvoiceImport] AS [DLTChassisInvoiceImport]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DLTLicenseImport" EntityType="Self.DLTLicenseImport" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTLicenseImport].[ID] AS [ID], 
+    [DLTLicenseImport].[ID_LICENSE] AS [ID_LICENSE]
+    FROM [dbo].[DLTLicenseImport] AS [DLTLicenseImport]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DLTLicenseInvoiceImport" EntityType="Self.DLTLicenseInvoiceImport" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTLicenseInvoiceImport].[ID] AS [ID], 
+    [DLTLicenseInvoiceImport].[ID_LICENSE] AS [ID_LICENSE], 
+    [DLTLicenseInvoiceImport].[INVOICE_NO] AS [INVOICE_NO], 
+    [DLTLicenseInvoiceImport].[ID_CHASSIS] AS [ID_CHASSIS]
+    FROM [dbo].[DLTLicenseInvoiceImport] AS [DLTLicenseInvoiceImport]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DLTMeiImport" EntityType="Self.DLTMeiImport" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTMeiImport].[ID] AS [ID], 
+    [DLTMeiImport].[ID_MEI] AS [ID_MEI]
+    FROM [dbo].[DLTMeiImport] AS [DLTMeiImport]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DLTMeiInvoiceImport" EntityType="Self.DLTMeiInvoiceImport" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTMeiInvoiceImport].[ID] AS [ID], 
+    [DLTMeiInvoiceImport].[ID_MEI] AS [ID_MEI], 
+    [DLTMeiInvoiceImport].[INVOICE_NO] AS [INVOICE_NO]
+    FROM [dbo].[DLTMeiInvoiceImport] AS [DLTMeiInvoiceImport]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

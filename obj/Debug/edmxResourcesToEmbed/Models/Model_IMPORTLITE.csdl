@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model_DLTCERIFICATE" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DLTCERIFICATE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CertificateNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CertificateOpenDate" Type="DateTime" Precision="0" />
+    <Property Name="CertificateValidDate" Type="DateTime" Precision="0" />
+    <Property Name="CertificateExpireDate" Type="DateTime" Precision="0" />
+    <Property Name="CertificateInstallDate" Type="DateTime" Precision="0" />
+    <Property Name="CertificateMobileSerialNO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CertificateLicenseNO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CertificateChassisNO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CertificateCustomerCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CertificateCustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CertificateAuthorizeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CertificateInstallContactName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CertificateInstallContactPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerContactName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerContactPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerContactEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DealerCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DealerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DealerAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DealerContactName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DealerContactPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DealerContactEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="CONN_IMPORTLITE" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DLTCERIFICATEs" EntityType="Self.DLTCERIFICATE" />
+  </EntityContainer>
+</Schema>

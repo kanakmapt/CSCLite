@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CSCLITEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CSCLITE.dbo.DLTChassisImport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTChassisImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_CHASSIS" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CSCLITE.dbo.DLTChassisInvoice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTChassisInvoice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_CHASSIS" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_COUNT" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_NO" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_COUNT_LOSE" Type="nvarchar" MaxLength="255" />
+    <Property Name="YEAR_LOSE" Type="int" />
+    <Property Name="INSTALL_DATE" Type="nvarchar" MaxLength="255" />
+    <Property Name="DEALER_CONTACT_NAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="DEALER_CONTACT_PHONE" Type="nvarchar" MaxLength="255" />
+    <Property Name="ID_LICENSE" Type="nvarchar" MaxLength="255" />
+    <Property Name="ID_MEI" Type="nvarchar(max)" />
+    <Property Name="INVOICE_NO_DATE" Type="nvarchar" MaxLength="255" />
+    <Property Name="INSTALL_YEAR" Type="nvarchar" MaxLength="10" />
+    <Property Name="INVOICE_PRICE" Type="nvarchar" MaxLength="255" />
+    <Property Name="CUSTOMER_NAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="CUSTOMER_PHONE" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_CUSTOMER" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_CUSTOMER_PHONE" Type="nvarchar" MaxLength="255" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CER_LICENSE" Type="nvarchar" MaxLength="255" />
+    <Property Name="MEI_NOT_FOUND" Type="int" />
+    <Property Name="CER_MEI" Type="nvarchar" MaxLength="255" />
+    <Property Name="STATUS_CHASSIS" Type="nvarchar" MaxLength="255" />
+    <Property Name="STATUS_MEI" Type="nvarchar" MaxLength="255" />
+    <Property Name="STATUS_LICENSE" Type="nvarchar" MaxLength="255" />
+    <Property Name="STATUS_DLT" Type="int" />
+  </EntityType>
+  <EntityType Name="DLTChassisInvoice_Mei">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_CHASSIS" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_COUNT" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_NO" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_COUNT_LOSE" Type="nvarchar" MaxLength="255" />
+    <Property Name="YEAR_LOSE" Type="int" />
+    <Property Name="INSTALL_DATE" Type="nvarchar" MaxLength="255" />
+    <Property Name="DEALER_CONTACT_NAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="DEALER_CONTACT_PHONE" Type="nvarchar" MaxLength="255" />
+    <Property Name="ID_LICENSE" Type="nvarchar" MaxLength="255" />
+    <Property Name="ID_MEI" Type="nvarchar(max)" />
+    <Property Name="INVOICE_NO_DATE" Type="nvarchar" MaxLength="255" />
+    <Property Name="INSTALL_YEAR" Type="nvarchar" MaxLength="10" />
+    <Property Name="INVOICE_PRICE" Type="nvarchar" MaxLength="255" />
+    <Property Name="CUSTOMER_NAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="CUSTOMER_PHONE" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_CUSTOMER" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_CUSTOMER_PHONE" Type="nvarchar" MaxLength="255" />
+    <Property Name="CER_LICENSE" Type="nvarchar" MaxLength="255" />
+    <Property Name="MEI_NOT_FOUND" Type="int" />
+    <Property Name="CER_MEI" Type="nvarchar" MaxLength="255" />
+    <Property Name="STATUS_CHASSIS" Type="nvarchar" MaxLength="255" />
+    <Property Name="STATUS_MEI" Type="nvarchar" MaxLength="255" />
+    <Property Name="STATUS_LICENSE" Type="nvarchar" MaxLength="255" />
+    <Property Name="STATUS_DLT" Type="int" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CSCLITE.dbo.DLTChassisInvoiceImport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTChassisInvoiceImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_CHASSIS" Type="nvarchar" MaxLength="50" />
+    <Property Name="INVOICE_NO" Type="nvarchar" MaxLength="100" />
+    <Property Name="INVOICE_NO_DATE" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_NO_PRICE" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_NAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_PHONE" Type="nvarchar" MaxLength="255" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DLTDetailChassis">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="STATUS_FLAG" Type="nvarchar" MaxLength="10" />
+    <Property Name="REMARK" Type="nvarchar" MaxLength="255" />
+    <Property Name="ID_USERS" Type="int" />
+    <Property Name="TITLE_DETAIL" Type="nvarchar" MaxLength="150" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="INVOICE_FLAG" Type="nvarchar" MaxLength="250" />
+    <Property Name="ID_CHASSIS" Type="nvarchar" MaxLength="50" />
+    <Property Name="UP_DATE_INVOICE_FLAG" Type="nvarchar" MaxLength="250" />
+    <Property Name="UP_DATE" Type="datetime" />
+    <Property Name="UP_DATE_PRICE_FLAG" Type="nvarchar" MaxLength="250" />
+    <Property Name="MEI" Type="nvarchar" MaxLength="250" />
+    <Property Name="LICENSE" Type="nvarchar" MaxLength="250" />
+    <Property Name="INVOICE_CUSTOMER" Type="nvarchar" MaxLength="250" />
+    <Property Name="DEALER_CONTACT_NAME" Type="nvarchar" MaxLength="250" />
+    <Property Name="CUSTOMER_NAME" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="DLTInvoice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="InvoiceNO" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceOpenDate" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceDueDate" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceCustomerCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceCustomerName" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceContactName" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceContactAddress" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceReference" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoicePeriod" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceMonth" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceYear" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceAmountBeforeVat" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceVat" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceTotal" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceTotalPayment" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceTotalRemain" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceTotalCreditNote" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceItemDescription" Type="nvarchar(max)" />
+    <Property Name="InvoiceItemBillQuantity" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceItemBillUnitPrice" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceItemBillAmount" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceType" Type="nvarchar" MaxLength="255" />
+    <Property Name="InvoiceProcess" Type="nvarchar" MaxLength="255" />
+    <Property Name="CustomerCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="255" />
+    <Property Name="CustomerAddress" Type="nvarchar" MaxLength="255" />
+    <Property Name="CustomerContactName" Type="nvarchar" MaxLength="255" />
+    <Property Name="CustomerContactPhone" Type="nvarchar" MaxLength="255" />
+    <Property Name="CustomerContactEmail" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectOpenDate" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectContractNO" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectContractDate" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectContractExpireDate" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectQuotationNO" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectQuotationDate" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectPurchaseOrderNO" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectPurchaseOrderDate" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectPromotion" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectGuarantee" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectRemark" Type="text" />
+    <Property Name="ProjectType" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectGroup" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectSellType" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectServiceType" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectPrice" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectVat" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectNetPrice" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectTotalQuantity" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectPickupQuantity" Type="nvarchar" MaxLength="255" />
+    <Property Name="ProjectRemainQuantity" Type="nvarchar" MaxLength="255" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CSCLITE.dbo.DLTLicenseImport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTLicenseImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_LICENSE" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CSCLITE.dbo.DLTLicenseInvoiceImport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTLicenseInvoiceImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_LICENSE" Type="nvarchar" MaxLength="50" />
+    <Property Name="INVOICE_NO" Type="nvarchar" MaxLength="100" />
+    <Property Name="ID_CHASSIS" Type="nvarchar" MaxLength="255" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CSCLITE.dbo.DLTMeiImport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTMeiImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_MEI" Type="nvarchar(max)" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CSCLITE.dbo.DLTMeiInvoiceImport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTMeiInvoiceImport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_MEI" Type="nvarchar(max)" />
+    <Property Name="INVOICE_NO" Type="nvarchar(max)" />
+    <Property Name="ID_CHASSIS" Type="nvarchar(max)" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_MEI_INVOICE_NO" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CSCLITE.dbo.DLTMeiInvoiceImportGroup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTMeiInvoiceImportGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID_MEI" Type="nvarchar" MaxLength="255" />
+    <Property Name="INVOICE_NO" Type="nvarchar" MaxLength="255" />
+    <Property Name="ID_CHASSIS" Type="nvarchar" MaxLength="255" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CSCLITE.dbo.DLTUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTUsers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="USERS" Type="nvarchar" MaxLength="100" />
+    <Property Name="PASSWORD" Type="nvarchar" MaxLength="100" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="100" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TABLE_REPORT_CUSTOMER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUSTOMER" Type="varchar" MaxLength="100" />
+    <Property Name="CONUT" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityContainer Name="CSCLITEModelStoreContainer">
+    <EntitySet Name="DLTChassisInvoice_Mei" EntityType="Self.DLTChassisInvoice_Mei" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DLTDetailChassis" EntityType="Self.DLTDetailChassis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DLTInvoice" EntityType="Self.DLTInvoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TABLE_REPORT_CUSTOMER" EntityType="Self.TABLE_REPORT_CUSTOMER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DLTChassisImport" EntityType="Self.DLTChassisImport" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTChassisImport].[ID_CHASSIS] AS [ID_CHASSIS], 
+    [DLTChassisImport].[ID] AS [ID]
+    FROM [dbo].[DLTChassisImport] AS [DLTChassisImport]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DLTChassisInvoice" EntityType="Self.DLTChassisInvoice" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTChassisInvoice].[ID_CHASSIS] AS [ID_CHASSIS], 
+    [DLTChassisInvoice].[INVOICE_COUNT] AS [INVOICE_COUNT], 
+    [DLTChassisInvoice].[INVOICE_NO] AS [INVOICE_NO], 
+    [DLTChassisInvoice].[INVOICE_COUNT_LOSE] AS [INVOICE_COUNT_LOSE], 
+    [DLTChassisInvoice].[YEAR_LOSE] AS [YEAR_LOSE], 
+    [DLTChassisInvoice].[INSTALL_DATE] AS [INSTALL_DATE], 
+    [DLTChassisInvoice].[DEALER_CONTACT_NAME] AS [DEALER_CONTACT_NAME], 
+    [DLTChassisInvoice].[DEALER_CONTACT_PHONE] AS [DEALER_CONTACT_PHONE], 
+    [DLTChassisInvoice].[ID_LICENSE] AS [ID_LICENSE], 
+    [DLTChassisInvoice].[ID_MEI] AS [ID_MEI], 
+    [DLTChassisInvoice].[INVOICE_NO_DATE] AS [INVOICE_NO_DATE], 
+    [DLTChassisInvoice].[INSTALL_YEAR] AS [INSTALL_YEAR], 
+    [DLTChassisInvoice].[INVOICE_PRICE] AS [INVOICE_PRICE], 
+    [DLTChassisInvoice].[CUSTOMER_NAME] AS [CUSTOMER_NAME], 
+    [DLTChassisInvoice].[CUSTOMER_PHONE] AS [CUSTOMER_PHONE], 
+    [DLTChassisInvoice].[INVOICE_CUSTOMER] AS [INVOICE_CUSTOMER], 
+    [DLTChassisInvoice].[INVOICE_CUSTOMER_PHONE] AS [INVOICE_CUSTOMER_PHONE], 
+    [DLTChassisInvoice].[ID] AS [ID], 
+    [DLTChassisInvoice].[CER_LICENSE] AS [CER_LICENSE], 
+    [DLTChassisInvoice].[MEI_NOT_FOUND] AS [MEI_NOT_FOUND], 
+    [DLTChassisInvoice].[CER_MEI] AS [CER_MEI], 
+    [DLTChassisInvoice].[STATUS_CHASSIS] AS [STATUS_CHASSIS], 
+    [DLTChassisInvoice].[STATUS_MEI] AS [STATUS_MEI], 
+    [DLTChassisInvoice].[STATUS_LICENSE] AS [STATUS_LICENSE], 
+    [DLTChassisInvoice].[STATUS_DLT] AS [STATUS_DLT]
+    FROM [dbo].[DLTChassisInvoice] AS [DLTChassisInvoice]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DLTChassisInvoiceImport" EntityType="Self.DLTChassisInvoiceImport" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTChassisInvoiceImport].[ID_CHASSIS] AS [ID_CHASSIS], 
+    [DLTChassisInvoiceImport].[INVOICE_NO] AS [INVOICE_NO], 
+    [DLTChassisInvoiceImport].[INVOICE_NO_DATE] AS [INVOICE_NO_DATE], 
+    [DLTChassisInvoiceImport].[INVOICE_NO_PRICE] AS [INVOICE_NO_PRICE], 
+    [DLTChassisInvoiceImport].[INVOICE_NAME] AS [INVOICE_NAME], 
+    [DLTChassisInvoiceImport].[INVOICE_PHONE] AS [INVOICE_PHONE], 
+    [DLTChassisInvoiceImport].[ID] AS [ID]
+    FROM [dbo].[DLTChassisInvoiceImport] AS [DLTChassisInvoiceImport]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DLTLicenseImport" EntityType="Self.DLTLicenseImport" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTLicenseImport].[ID_LICENSE] AS [ID_LICENSE], 
+    [DLTLicenseImport].[ID] AS [ID]
+    FROM [dbo].[DLTLicenseImport] AS [DLTLicenseImport]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DLTLicenseInvoiceImport" EntityType="Self.DLTLicenseInvoiceImport" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTLicenseInvoiceImport].[ID_LICENSE] AS [ID_LICENSE], 
+    [DLTLicenseInvoiceImport].[INVOICE_NO] AS [INVOICE_NO], 
+    [DLTLicenseInvoiceImport].[ID_CHASSIS] AS [ID_CHASSIS], 
+    [DLTLicenseInvoiceImport].[ID] AS [ID]
+    FROM [dbo].[DLTLicenseInvoiceImport] AS [DLTLicenseInvoiceImport]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DLTMeiImport" EntityType="Self.DLTMeiImport" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTMeiImport].[ID_MEI] AS [ID_MEI], 
+    [DLTMeiImport].[ID] AS [ID]
+    FROM [dbo].[DLTMeiImport] AS [DLTMeiImport]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DLTMeiInvoiceImport" EntityType="Self.DLTMeiInvoiceImport" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTMeiInvoiceImport].[ID_MEI] AS [ID_MEI], 
+    [DLTMeiInvoiceImport].[INVOICE_NO] AS [INVOICE_NO], 
+    [DLTMeiInvoiceImport].[ID_CHASSIS] AS [ID_CHASSIS], 
+    [DLTMeiInvoiceImport].[ID] AS [ID], 
+    [DLTMeiInvoiceImport].[ID_MEI_INVOICE_NO] AS [ID_MEI_INVOICE_NO]
+    FROM [dbo].[DLTMeiInvoiceImport] AS [DLTMeiInvoiceImport]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DLTMeiInvoiceImportGroup" EntityType="Self.DLTMeiInvoiceImportGroup" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTMeiInvoiceImportGroup].[ID_MEI] AS [ID_MEI], 
+    [DLTMeiInvoiceImportGroup].[INVOICE_NO] AS [INVOICE_NO], 
+    [DLTMeiInvoiceImportGroup].[ID_CHASSIS] AS [ID_CHASSIS], 
+    [DLTMeiInvoiceImportGroup].[ID] AS [ID]
+    FROM [dbo].[DLTMeiInvoiceImportGroup] AS [DLTMeiInvoiceImportGroup]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DLTUsers" EntityType="Self.DLTUsers" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTUsers].[USERS] AS [USERS], 
+    [DLTUsers].[PASSWORD] AS [PASSWORD], 
+    [DLTUsers].[NAME] AS [NAME], 
+    [DLTUsers].[ID] AS [ID]
+    FROM [dbo].[DLTUsers] AS [DLTUsers]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

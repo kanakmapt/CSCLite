@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model_DLTCERIFICATE.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'IMPORTLITE.dbo.DLTCERIFICATE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DLTCERIFICATE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CertificateNO" Type="nvarchar" MaxLength="50" />
+    <Property Name="CertificateOpenDate" Type="date" />
+    <Property Name="CertificateValidDate" Type="date" />
+    <Property Name="CertificateExpireDate" Type="date" />
+    <Property Name="CertificateInstallDate" Type="date" />
+    <Property Name="CertificateMobileSerialNO" Type="nvarchar" MaxLength="100" />
+    <Property Name="CertificateLicenseNO" Type="nvarchar" MaxLength="100" />
+    <Property Name="CertificateChassisNO" Type="nvarchar" MaxLength="100" />
+    <Property Name="CertificateCustomerCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="CertificateCustomerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CertificateAuthorizeName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CertificateInstallContactName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CertificateInstallContactPhone" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerContactName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerContactPhone" Type="nvarchar" MaxLength="100" />
+    <Property Name="CustomerContactEmail" Type="nvarchar" MaxLength="100" />
+    <Property Name="DealerCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="DealerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DealerAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="DealerContactName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DealerContactPhone" Type="nvarchar" MaxLength="100" />
+    <Property Name="DealerContactEmail" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityContainer Name="Model_DLTCERIFICATEStoreContainer">
+    <EntitySet Name="DLTCERIFICATE" EntityType="Self.DLTCERIFICATE" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DLTCERIFICATE].[ID] AS [ID], 
+    [DLTCERIFICATE].[CertificateNO] AS [CertificateNO], 
+    [DLTCERIFICATE].[CertificateOpenDate] AS [CertificateOpenDate], 
+    [DLTCERIFICATE].[CertificateValidDate] AS [CertificateValidDate], 
+    [DLTCERIFICATE].[CertificateExpireDate] AS [CertificateExpireDate], 
+    [DLTCERIFICATE].[CertificateInstallDate] AS [CertificateInstallDate], 
+    [DLTCERIFICATE].[CertificateMobileSerialNO] AS [CertificateMobileSerialNO], 
+    [DLTCERIFICATE].[CertificateLicenseNO] AS [CertificateLicenseNO], 
+    [DLTCERIFICATE].[CertificateChassisNO] AS [CertificateChassisNO], 
+    [DLTCERIFICATE].[CertificateCustomerCode] AS [CertificateCustomerCode], 
+    [DLTCERIFICATE].[CertificateCustomerName] AS [CertificateCustomerName], 
+    [DLTCERIFICATE].[CertificateAuthorizeName] AS [CertificateAuthorizeName], 
+    [DLTCERIFICATE].[CertificateInstallContactName] AS [CertificateInstallContactName], 
+    [DLTCERIFICATE].[CertificateInstallContactPhone] AS [CertificateInstallContactPhone], 
+    [DLTCERIFICATE].[CustomerCode] AS [CustomerCode], 
+    [DLTCERIFICATE].[CustomerName] AS [CustomerName], 
+    [DLTCERIFICATE].[CustomerAddress] AS [CustomerAddress], 
+    [DLTCERIFICATE].[CustomerContactName] AS [CustomerContactName], 
+    [DLTCERIFICATE].[CustomerContactPhone] AS [CustomerContactPhone], 
+    [DLTCERIFICATE].[CustomerContactEmail] AS [CustomerContactEmail], 
+    [DLTCERIFICATE].[DealerCode] AS [DealerCode], 
+    [DLTCERIFICATE].[DealerName] AS [DealerName], 
+    [DLTCERIFICATE].[DealerAddress] AS [DealerAddress], 
+    [DLTCERIFICATE].[DealerContactName] AS [DealerContactName], 
+    [DLTCERIFICATE].[DealerContactPhone] AS [DealerContactPhone], 
+    [DLTCERIFICATE].[DealerContactEmail] AS [DealerContactEmail]
+    FROM [dbo].[DLTCERIFICATE] AS [DLTCERIFICATE]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

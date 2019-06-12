@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model_DLTCERIFICATEStoreContainer" CdmEntityContainer="CONN_IMPORTLITE">
+    <EntitySetMapping Name="DLTCERIFICATEs">
+      <EntityTypeMapping TypeName="Model_DLTCERIFICATE.DLTCERIFICATE">
+        <MappingFragment StoreEntitySet="DLTCERIFICATE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CertificateNO" ColumnName="CertificateNO" />
+          <ScalarProperty Name="CertificateOpenDate" ColumnName="CertificateOpenDate" />
+          <ScalarProperty Name="CertificateValidDate" ColumnName="CertificateValidDate" />
+          <ScalarProperty Name="CertificateExpireDate" ColumnName="CertificateExpireDate" />
+          <ScalarProperty Name="CertificateInstallDate" ColumnName="CertificateInstallDate" />
+          <ScalarProperty Name="CertificateMobileSerialNO" ColumnName="CertificateMobileSerialNO" />
+          <ScalarProperty Name="CertificateLicenseNO" ColumnName="CertificateLicenseNO" />
+          <ScalarProperty Name="CertificateChassisNO" ColumnName="CertificateChassisNO" />
+          <ScalarProperty Name="CertificateCustomerCode" ColumnName="CertificateCustomerCode" />
+          <ScalarProperty Name="CertificateCustomerName" ColumnName="CertificateCustomerName" />
+          <ScalarProperty Name="CertificateAuthorizeName" ColumnName="CertificateAuthorizeName" />
+          <ScalarProperty Name="CertificateInstallContactName" ColumnName="CertificateInstallContactName" />
+          <ScalarProperty Name="CertificateInstallContactPhone" ColumnName="CertificateInstallContactPhone" />
+          <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+          <ScalarProperty Name="CustomerContactName" ColumnName="CustomerContactName" />
+          <ScalarProperty Name="CustomerContactPhone" ColumnName="CustomerContactPhone" />
+          <ScalarProperty Name="CustomerContactEmail" ColumnName="CustomerContactEmail" />
+          <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+          <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+          <ScalarProperty Name="DealerAddress" ColumnName="DealerAddress" />
+          <ScalarProperty Name="DealerContactName" ColumnName="DealerContactName" />
+          <ScalarProperty Name="DealerContactPhone" ColumnName="DealerContactPhone" />
+          <ScalarProperty Name="DealerContactEmail" ColumnName="DealerContactEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,41 @@
+﻿@using WebHelpers.Mvc5
+<aside class="main-sidebar">
+    <section class="sidebar">
+        @* BEGIN Search *@
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+        @* END Search *@
+        @* BEGIN Menu *@
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="@Url.IsLinkActive("Index", "Dashboard")">
+                <a href="@Url.Action("Index", "Dashboard")"><i class="fa fa-fw fa-file-excel-o"></i> <span>Dashboard</span></a>
+            </li>
+            <li class="@Url.IsLinkActive("Index", "ImportCSV")">
+                <a href="@Url.Action("Index", "ImportCSV")"><i class="fa fa-fw fa-file-excel-o"></i> <span>นำเข้าข้อมูล</span></a>
+            </li>
+            <li class="@Url.IsLinkActive("Index", "Report")">
+                <a href="@Url.Action("Index", "Report")"><i class="fa fa-fw fa-bar-chart"></i> <span>รายงานสรุป</span></a>
+            </li>
+            <li class="@Url.IsLinkActive("Index_Mei", "Report")">
+                <a href="@Url.Action("Index_Mei", "Report")"><i class="fa fa-fw fa-bar-chart"></i> <span>รายงานสรุป Mei</span></a>
+            </li>
+
+            <li class="@Url.IsLinkActive("Index", "Log")">
+                <a href="@Url.Action("Index", "Log")"><i class="fa fa-search"></i> <span>LogInfo</span></a>
+            </li>
+            <li class="@Url.IsLinkActive("Index", "Users")">
+                <a href="@Url.Action("Index", "Users")"><i class="fa  fa-user"></i> <span>ผู้ใช้งาน</span></a>
+            </li>
+        
+        </ul>
+        @* END Menu *@
+    </section>
+</aside>

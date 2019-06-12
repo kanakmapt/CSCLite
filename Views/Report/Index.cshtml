@@ -145,8 +145,8 @@
                                             <a href="@Url.Action("Index", "Report", new { year = "", STATUS_SEARCH = '3' })">
                                                 <div class="small-box bg-gray-light">
                                                     <div class="inner">
-
-                                                        <p>จำนวนรถทั้งหมด: @{ int total = Convert.ToInt16(ViewBag.DLTChassis_InvoiceNot) + Convert.ToInt16(ViewBag.DLTChassis_InvoiceOr) + Convert.ToInt16(ViewBag.DLTChassis_InvoiceSc) + Convert.ToInt16(ViewBag.DLTChassis_InvoiceNext); }</p>
+                                                        @{ int total = Convert.ToInt16(ViewBag.DLTChassis_InvoiceNot) + Convert.ToInt16(ViewBag.DLTChassis_InvoiceOr) + Convert.ToInt16(ViewBag.DLTChassis_InvoiceSc) + Convert.ToInt16(ViewBag.DLTChassis_InvoiceNext); }
+                                                        <p>จำนวนรถทั้งหมด: @total</p>
                                                     </div>
 
                                                 </div>

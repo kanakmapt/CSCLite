@@ -145,16 +145,16 @@
                                             <a href="@Url.Action("Index", "Report", new { year = "", STATUS_SEARCH = '3' })">
                                                 <div class="small-box bg-gray-light">
                                                     <div class="inner">
-
-                                                        <p>ราคา:-</p>
+                                                        @{ int total = Convert.ToInt16(ViewBag.DLTChassis_InvoiceNot) + Convert.ToInt16(ViewBag.DLTChassis_InvoiceOr) + Convert.ToInt16(ViewBag.DLTChassis_InvoiceSc) + Convert.ToInt16(ViewBag.DLTChassis_InvoiceNext); }
+                                                        <p>จำนวนรถทั้งหมด: @total</p>
                                                     </div>
 
                                                 </div>
                                             </a>
                                         </div>
                                     </div>
-
-                                    <div class="box box-primary box-solid collapsed-box">
+                                    @{   string g1 = Session["group_1"].ToString(); }
+                                    <div class="box box-primary box-solid @g1">
                                         <div class="box-header with-border box-primary">
                                             <h3 class="box-title">
                                                 ค้นหาข้อมูลทั่วไป:
@@ -206,8 +206,8 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="box box-primary box-solid  collapsed-box">
+                                    @{   string g2 = Session["group_2"].ToString(); }
+                                    <div class="box box-primary box-solid  @g2">
                                         <div class="box-header with-border box-primary">
                                             <h3 class="box-title">
                                                 ค้นหาข้อมูลประเภทวันที่:
@@ -259,8 +259,8 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="box box-primary box-solid  collapsed-box">
+                                    @{   string g3 = Session["group_3"].ToString(); }
+                                    <div class="box box-primary box-solid  @g3">
                                         <div class="box-header with-border box-primary">
                                             <h3 class="box-title">
                                                 ค้นหาข้อมูลสถานะ:
@@ -309,7 +309,7 @@
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fa fa-search"></i> Search
                                                 </button>
-                                                <input type="button" value="Clear Search" class="btn btn-primary" onclick="window.location.href='@Url.Action("Report","Index")'" />
+                                                <input type="button" value="Clear Search" class="btn btn-primary" onclick="window.location.href='@Url.Action("Index","Report")'" />
                                                 <button type="button" class="btn btn-primary" onclick="" data-toggle="modal" data-target="#modal_1-info">
                                                     <i class="fa fa-fw fa-file-excel-o"></i>    Export Excal
                                                 </button>
@@ -471,48 +471,78 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @{  int i = 0;
+                                        @{ 
+                                          
+                                            int i = 0;
                                             string bg = "";
                                             string ID = "";
                                             int i2 = -1;
                                             string color = "";
+                                            int field_ = Model.Rows[0].Field<string>(1).ToString().Split(':').Length;
+                                            
                                         }
 
-                                        @foreach (System.Data.DataRow row in Model.Rows)
-                                        {
-                                            i2++;
-                                            i = 0;
-                                            string field = Model.Rows[i2].Field<string>(1).ToString().Split(':')[0];
-                                            <tr class="@field" id="" name="">
-                                                @foreach (var cell in row.ItemArray)
+                                         
+                                           
+                                            @foreach (System.Data.DataRow row in Model.Rows)
+                                            {
+                                                if (field_ != 1)
                                                 {
-                                                    i++;
-                                                    if (i == 2) { bg = cell.ToString(); }
-                                                    if (i == 3) { ID = cell.ToString(); }
-                                                    if (i == 2)
+                                                    i2++;
+                                                    i = 0;
+                                                    string field = Model.Rows[i2].Field<string>(1).ToString().Split(':')[0];
+                                                <tr class="@field" id="" name="">
+                                                    @foreach (var cell in row.ItemArray)
                                                     {
-                                                        string Status = "-";
-                                                        if (cell.ToString().Split(':')[1] == "1") { Status = "M"; }
-                                                        if (cell.ToString().Split(':')[2] == "1") { Status = Status+ "L"; }
-                                                        <td>@Status </td>
+                                                        i++;
+                                                        if (i == 2) { bg = cell.ToString(); }
+                                                        if (i == 3) { ID = cell.ToString(); }
+                                                        if (i == 2)
+                                                        {
+                                                            string Status = "-";
+                                                            if (cell.ToString().Split(':')[1] == "1") { Status = "M"; }
+                                                            if (cell.ToString().Split(':')[2] == "1") { Status = Status + "L"; }
+                                                            <td>@Status </td>
+                                                        }
+                                                        if (i == 3)
+                                                        {
+                                                            <td>@cell.ToString().Replace("'", "")  </td>
+                                                        }
+                                                        if (i >= 4 && i <= 27)
+                                                        {
+                                                            <td> @cell.ToString() </td>
+                                                        }
                                                     }
-                                                    if (i == 3)
-                                                    {
-                                                        <td >@cell.ToString().Replace("'", "")  </td>
-                                                    }
-                                                    if (i >= 4 && i <= 27)
-                                                    {
-                                                        <td > @cell.ToString() </td>
-                                                    }
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary" onclick="list_Head('@ID')" data-toggle="modal" data-target="#modal-info">
+                                                            Detail
+                                                        </button>
+                                                    </td>
+                                                </tr>
                                                 }
-                                                <td>
-                                                    <button type="button" class="btn btn-primary" onclick="list_Head('@ID')" data-toggle="modal" data-target="#modal-info">
-                                                        Detail
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        }
-                                    </tbody>
+                                                else
+                                                {
+                                                    <tr class="" id="" name="">
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>
+                                                            ไม่พบข้อมูล
+                                                        </td>
+                                                </tr>
+                                                }
+                                            }
+</tbody>
                                 </table>
                             </div>
                         </div>
@@ -628,10 +658,11 @@
                                     <label class="control-label">เลือกรายการ</label><br>
                                     <select id="Status_" name="Status_" class="form-control">
                                         <option selected="selected" value="">สถานะ</option>
-                                        <option value="red">ย้าย:ไม่พบข้อมูล</option>
-                                        <option value="orange">ย้าย:วางไม่ครบ</option>
+                                        <option value="orange">ย้าย:ไม่พบข้อมูล</option>
+                                        <option value="yellow">ย้าย:วางไม่ครบ</option>
                                         <option value="green">ย้าย:วางครบ</option>
                                         <option value="purple">ย้าย:วางเกิน</option>
+                                        <option value="orange_except">ย้าย:ทุกรายการ(ยกเว้นไม่พบข้อมูล)</option>
                                     </select>
                                     <select id="d_" name="d_" class="form-control">
                                         <option selected="selected" value="">วันที่</option>

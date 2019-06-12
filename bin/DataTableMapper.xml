@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataTableMapper</name>
+    </assembly>
+    <members>
+        <member name="T:DataTableMapper.Attributes.ColumnMappingAttribute">
+            <summary>
+            Map a DataTable column to a property
+            </summary>
+        </member>
+        <member name="T:DataTableMapper.Attributes.Core.ColumnMappingAttributeBase">
+            <summary>
+            Base Column Mapping Attribute
+            </summary>
+        </member>
+        <member name="T:DataTableMapper.Attributes.Core.DataMapperAttribute">
+            <summary>
+            Base class for all DataMapper Attributes
+            </summary>
+        </member>
+        <member name="M:DataTableMapper.Attributes.ColumnMappingAttribute.#ctor(System.String[])">
+            <summary>
+            Indicates the column name(s) to map to this property
+            </summary>
+            <param name="aliases"></param>
+        </member>
+        <member name="P:DataTableMapper.Attributes.ColumnMappingAttribute.Aliases">
+            <summary>
+            DataTable column name aliases
+            </summary>
+        </member>
+        <member name="T:DataTableMapper.Attributes.DefaultValueAttribute">
+            <summary>
+            Use to set a default value for a property where no mapping can be done
+            </summary>
+        </member>
+        <member name="M:DataTableMapper.Attributes.DefaultValueAttribute.#ctor(System.Object)">
+            <summary>
+            Setup a default value for the property after mapping if no mapping can be found or the value is DBNull
+            </summary>
+            <param name="value">The default value of the property</param>
+        </member>
+        <member name="P:DataTableMapper.Attributes.DefaultValueAttribute.Value">
+            <summary>
+            The default value for the property
+            </summary>
+        </member>
+        <member name="T:DataTableMapper.Attributes.IgnoreMappingAttribute">
+            <summary>
+            Have the mapping ignore setting this property
+            </summary>
+        </member>
+        <member name="T:DataTableMapper.Attributes.PropertyMappingAttribute">
+            <summary>
+            Allows DataTableMapper to map a property to a column name
+            </summary>
+        </member>
+        <member name="M:DataTableMapper.Attributes.PropertyMappingAttribute.#ctor(System.String[])">
+             <summary>
+            
+             </summary>
+             <param name="aliases">An array of column names</param>
+        </member>
+        <member name="M:DataTableMapper.Attributes.PropertyMappingAttribute.Convert(System.Object)">
+            <summary>
+            The default convert just returns the input
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DataTableMapper.Attributes.IValueConversion">
+            <summary>
+            For converting a value to another value before setting a property
+            </summary>
+        </member>
+        <member name="M:DataTableMapper.Attributes.IValueConversion.Convert(System.Object)">
+            <summary>
+            Convert an object to another object before setting the property
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DataTableMapper.Attributes.BoolValueConversionAttribute">
+            <summary>
+            Tries to convert the object to an bool as per the C-like rules. e.g. zero is false, non-zero is true
+            </summary>
+        </member>
+        <member name="M:DataTableMapper.Attributes.BoolValueConversionAttribute.#ctor(System.String[])">
+            <summary>
+            Map column to bool with Bool.TryParse and C-like value conversion attempts.
+            </summary>
+            <param name="aliases"></param>
+        </member>
+        <member name="M:DataTableMapper.Attributes.BoolValueConversionAttribute.Convert(System.Object)">
+            <summary>
+            Convert object to bool using C-like rules and Bool.TryParse
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DataTableMapper.DataTableExtensions">
+            <summary>
+            Contains extension methods for System.Data.DataTable
+            </summary>
+        </member>
+        <member name="M:DataTableMapper.DataTableExtensions.MapTo``1(System.Data.DataTable)">
+            <summary>
+            Maps DataTable to type T's properties for each row in table
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="table"></param>
+            <returns>Enumerable of T</returns>
+        </member>
+        <member name="M:DataTableMapper.DataTableExtensions.MapTo``1(System.Data.DataTable,System.String)">
+            <summary>
+            Maps a column to an IEnumerable of T, where T is a primitive or string (simple types)
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="table"></param>
+            <param name="columnName">The table column name to read</param>
+            <returns>Enumerable of T</returns>
+        </member>
+        <member name="M:DataTableMapper.Mapping.SimpleTypePropertyMapping.SetPropertyValue(System.Object,System.Object,System.Reflection.PropertyInfo)">
+            <summary>
+            set the property value converting it to the right type. Checks for nullables also
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+            <param name="property"></param>
+        </member>
+        <member name="M:DataTableMapper.Extensions.DataRowExtensions.TryReadColumn(System.Data.DataRow,System.String)">
+            <summary>
+            Try to get a value from the row for the specified column name
+            </summary>
+            <param name="row"></param>
+            <param name="columnName"></param>
+            <returns>Returns the object in the column or null if the value is a DBNull or the column doesn't exist</returns>
+        </member>
+        <member name="T:DataTableMapper.Mapping.TypeHelper">
+            <summary>
+            Helping to categorise types!
+            </summary>
+        </member>
+        <member name="T:DataTableMapper.TypeConversion.BaseTypeConverter">
+            <summary>
+            Basic type conversion
+            </summary>
+        </member>
+        <member name="T:DataTableMapper.TypeConversion.ITypeConverter">
+            <summary>
+            For converting types
+            </summary>
+        </member>
+        <member name="T:DataTableMapper.TypeConversion.EnumTypeConverter">
+            <summary>
+            Converts values to enum
+            </summary>
+        </member>
+        <member name="T:DataTableMapper.TypeConversion.NullableTypeConverter">
+            <summary>
+            Convert a value to a nullable type
+            </summary>
+        </member>
+    </members>
+</doc>

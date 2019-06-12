@@ -1,4 +1,3 @@
-D:\Source_project\project\CSCLite\CSCLiteFile\CSCLite\bin\ApplicationInsights.config
 D:\Source_project\project\CSCLite\CSCLiteFile\CSCLite\bin\CSCLite.dll.config
 D:\Source_project\project\CSCLite\CSCLiteFile\CSCLite\bin\CSCLite.dll
 D:\Source_project\project\CSCLite\CSCLiteFile\CSCLite\bin\CSCLite.pdb

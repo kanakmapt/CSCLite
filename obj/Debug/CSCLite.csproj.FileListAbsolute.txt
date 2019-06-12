@@ -402,7 +402,6 @@ D:\Source_project\project\app\xxxx\CSCLiteFile\CSCLite\bin\WebHelpers.Mvc5.xml
 D:\Source_project\project\app\xxxx\CSCLiteFile\CSCLite\obj\Debug\CSCLite.csprojResolveAssemblyReference.cache
 D:\Source_project\project\app\xxxx\CSCLiteFile\CSCLite\obj\Debug\CSCLite.dll
 D:\Source_project\project\app\xxxx\CSCLiteFile\CSCLite\obj\Debug\CSCLite.pdb
-D:\Source_project\project\CSCLite\CSCLiteFile\CSCLite\bin\ApplicationInsights.config
 D:\Source_project\project\CSCLite\CSCLiteFile\CSCLite\bin\CSCLite.dll.config
 D:\Source_project\project\CSCLite\CSCLiteFile\CSCLite\bin\CSCLite.dll
 D:\Source_project\project\CSCLite\CSCLiteFile\CSCLite\bin\CSCLite.pdb
@@ -510,4 +509,3 @@ D:\Source_project\project\CSCLite\CSCLiteFile\CSCLite\obj\Debug\CSCLite.Properti
 D:\Source_project\project\CSCLite\CSCLiteFile\CSCLite\obj\Debug\CSCLite.csproj.GenerateResource.Cache
 D:\Source_project\project\CSCLite\CSCLiteFile\CSCLite\bin\DataTableMapper.dll
 D:\Source_project\project\CSCLite\CSCLiteFile\CSCLite\bin\DataTableMapper.xml
-D:\Source_project\project\CSCLite\CSCLiteFile\CSCLite\obj\Debug\CSCLite.csprojResolveAssemblyReference.cache

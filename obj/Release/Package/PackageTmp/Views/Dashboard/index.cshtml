@@ -88,8 +88,9 @@
                                     <div class="info-box">
                                         <span class="info-box-icon bg-orange"><i class="fa fa fa-ban "></i></span>
                                         <div class="info-box-content">
-                                            @{var i1 = 543 + Convert.ToInt32(item); }
-                                            <span class="info-box-text">ไม่เคยวาง ปี @i1</span>
+                                            @{var i1 = 543 + Convert.ToInt32(item);  string null_setup = "ไม่เคยวาง ปี "; if (Convert.ToInt32(item) == 1900) { null_setup = "(ยังไม่มีวันที่ติดตั้ง)"; }
+                                            }
+                                            <span class="info-box-text">@null_setup @i1 </span>
                                             <span class="info-box-number">@Model.Where(a => a.INVOICE_NO == null && a.INSTALL_YEAR == @item).Count()</span>
                                         </div>
                                     </div>
